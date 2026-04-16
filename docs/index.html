@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — KidSpark Academy</title>
+  <style>
+    :root {
+      --spark: #7C3AED;
+      --spark-light: #F5F0FF;
+      --coral: #F43F5E;
+      --leaf: #10B981;
+      --sky: #0EA5E9;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--spark-light);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%);
+      color: white;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+    header .logo {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    header p {
+      margin-top: 0.4rem;
+      opacity: 0.85;
+      font-size: 0.95rem;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 999px;
+      padding: 0.25rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Summary box ── */
+    .summary-box {
+      background: white;
+      border-left: 4px solid var(--leaf);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .summary-box h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--leaf);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .summary-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .summary-box li::before {
+      content: "✅ ";
+    }
+    .summary-box li {
+      font-size: 0.95rem;
+    }
+
+    /* ── Sections ── */
+    section {
+      background: white;
+      border-radius: 14px;
+      padding: 1.75rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    section h2 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--spark);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    section h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 1rem 0 0.4rem;
+      color: var(--text);
+    }
+    section p, section li {
+      font-size: 0.95rem;
+      color: #374151;
+      margin-bottom: 0.5rem;
+    }
+    section ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    section ul li {
+      margin-bottom: 0.35rem;
+    }
+
+    /* ── Alert box ── */
+    .alert {
+      background: #FFF7ED;
+      border-left: 4px solid #F97316;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: #92400E;
+    }
+    .alert strong { color: #78350F; }
+
+    .coppa-box {
+      background: #EFF6FF;
+      border-left: 4px solid var(--sky);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: #1e40af;
+    }
+    .coppa-box strong { color: #1e3a8a; }
+
+    /* ── Table ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 1rem 0;
+    }
+    th {
+      background: var(--spark-light);
+      color: var(--spark);
+      font-weight: 700;
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      border-bottom: 2px solid var(--border);
+    }
+    td {
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    .yes { color: var(--leaf); font-weight: 700; }
+    .no  { color: var(--coral); font-weight: 700; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--spark); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Last updated pill ── */
+    .meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .pill {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      section { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header>
+  <div class="logo">⚡</div>
+  <h1>KidSpark Academy — Privacy Policy</h1>
+  <p>We built KidSpark Academy to teach kids to code, not to collect their data.</p>
+  <div class="badge">COPPA Compliant · Apple Kids Category · GDPR &amp; CCPA Aware</div>
+</header>
+
+<!-- ══════════════ MAIN ══════════════ -->
+<main>
+
+  <div class="meta">
+    <span class="pill">📅 Effective: April 16, 2026</span>
+    <span class="pill">🔄 Last updated: April 16, 2026</span>
+    <span class="pill">📱 iOS App</span>
+  </div>
+
+  <!-- Quick summary -->
+  <div class="summary-box">
+    <h2>The short version</h2>
+    <ul>
+      <li>All your data stays on your device — we have no servers.</li>
+      <li>We do not collect names, emails, or any personal information.</li>
+      <li>We do not show ads, track behavior, or share data with third parties.</li>
+      <li>In-app purchases are handled entirely by Apple — we never see payment details.</li>
+      <li>Local notifications are scheduled on your device only.</li>
+      <li>Parents can review and delete all data via the Profile → Reset Progress option.</li>
+    </ul>
+  </div>
+
+  <!-- 1. Who we are -->
+  <section>
+    <h2>1. Who We Are</h2>
+    <p>
+      KidSpark Academy ("we," "our," or "us") is an iOS application designed to teach coding
+      fundamentals to children (ages 6–10) and teens (ages 11–16). We are independent app
+      developers committed to building safe, educational software for young learners.
+    </p>
+    <p>
+      <strong>Contact:</strong> For any privacy-related questions, email us at
+      <a href="mailto:privacy@kidspark.academy">privacy@kidspark.academy</a>.
+    </p>
+    <p>
+      <strong>App Store listing:</strong> KidSpark Academy is published on Apple's App Store
+      and is classified in the <strong>Kids</strong> category, which subjects it to Apple's
+      strictest content and privacy standards.
+    </p>
+  </section>
+
+  <!-- 2. Scope -->
+  <section>
+    <h2>2. Scope of This Policy</h2>
+    <p>
+      This Privacy Policy applies to the KidSpark Academy iOS application and any related
+      support pages (including this page). It does not apply to any third-party websites,
+      services, or content you may link to from within the app.
+    </p>
+    <p>
+      This policy is written in plain language so that parents, guardians, and older children
+      can understand exactly how the app handles data.
+    </p>
+  </section>
+
+  <!-- 3. Data we collect -->
+  <section>
+    <h2>3. Information We Collect (and Don't Collect)</h2>
+
+    <h3>What we store — on your device only</h3>
+    <table>
+      <tr>
+        <th>Data</th>
+        <th>Where stored</th>
+        <th>Leaves device?</th>
+      </tr>
+      <tr>
+        <td>Nickname ("Coder" by default)</td>
+        <td>SwiftData — on device</td>
+        <td class="no">Never</td>
+      </tr>
+      <tr>
+        <td>XP points &amp; level</td>
+        <td>SwiftData — on device</td>
+        <td class="no">Never</td>
+      </tr>
+      <tr>
+        <td>Daily streak count</td>
+        <td>SwiftData — on device</td>
+        <td class="no">Never</td>
+      </tr>
+      <tr>
+        <td>Lesson completion status &amp; scores</td>
+        <td>SwiftData — on device</td>
+        <td class="no">Never</td>
+      </tr>
+      <tr>
+        <td>Earned badges &amp; milestones</td>
+        <td>SwiftData — on device</td>
+        <td class="no">Never</td>
+      </tr>
+      <tr>
+        <td>Weekly challenge completion</td>
+        <td>SwiftData — on device</td>
+        <td class="no">Never</td>
+      </tr>
+      <tr>
+        <td>Parent dashboard PIN</td>
+        <td>UserDefaults — on device</td>
+        <td class="no">Never</td>
+      </tr>
+      <tr>
+        <td>Pro subscription status</td>
+        <td>Mirrored from Apple StoreKit</td>
+        <td class="no">Managed by Apple</td>
+      </tr>
+    </table>
+
+    <h3>What we do NOT collect</h3>
+    <ul>
+      <li>Full name, email address, phone number, or any contact information</li>
+      <li>Date of birth or age (we do not verify age)</li>
+      <li>Location or GPS data</li>
+      <li>Device identifiers (IDFA, IDFV, or similar)</li>
+      <li>Photos, camera, or microphone access</li>
+      <li>Contacts or address book</li>
+      <li>Usage analytics or crash reports sent off-device</li>
+      <li>Advertising identifiers</li>
+    </ul>
+
+    <div class="alert">
+      <strong>No account creation required.</strong> KidSpark Academy does not ask users
+      to create accounts or log in with any service (including Sign in with Apple or social
+      login). There is no user database.
+    </div>
+  </section>
+
+  <!-- 4. Children's privacy / COPPA -->
+  <section>
+    <h2>4. Children's Privacy (COPPA)</h2>
+
+    <div class="coppa-box">
+      <strong>Important for parents and guardians:</strong> KidSpark Academy is designed
+      for children and complies with the Children's Online Privacy Protection Act (COPPA)
+      and applicable international children's privacy laws.
+    </div>
+
+    <p>
+      Because the app is directed at children under 13, we have designed it to collect
+      <strong>no personal information</strong> whatsoever. Specifically:
+    </p>
+    <ul>
+      <li>We do not collect names, email addresses, or any contact details from children.</li>
+      <li>We do not allow children to share information publicly within the app.</li>
+      <li>We do not enable direct messaging or chat features.</li>
+      <li>We do not serve behavioral or targeted advertisements.</li>
+      <li>We do not embed third-party analytics SDKs, social media SDKs, or advertising SDKs.</li>
+      <li>All data is stored locally on the device and is never transmitted to external servers.</li>
+    </ul>
+
+    <h3>Parental controls</h3>
+    <p>
+      The app includes a <strong>Parent Dashboard</strong> protected by a 4-digit PIN that
+      only a parent or guardian sets. Through this dashboard, parents can:
+    </p>
+    <ul>
+      <li>View all learning progress, XP, streaks, and badges</li>
+      <li>Review weekly activity and estimated time spent</li>
+    </ul>
+    <p>
+      Parents can delete all data stored by the app at any time using
+      <strong>Profile → Reset Progress</strong>, or by deleting the app from the device.
+      Deleting the app removes all SwiftData and UserDefaults entries permanently.
+    </p>
+
+    <h3>Parental consent</h3>
+    <p>
+      Because KidSpark Academy does not collect any personal information from children,
+      verifiable parental consent under COPPA is not required. However, we encourage parents
+      and guardians to review this policy and to set up the Parent Dashboard PIN before
+      a child uses the app.
+    </p>
+  </section>
+
+  <!-- 5. How we use information -->
+  <section>
+    <h2>5. How We Use Information</h2>
+    <p>
+      The data stored locally on your device is used solely to operate the app's features:
+    </p>
+    <ul>
+      <li><strong>Lesson progress</strong> — to show which lessons are complete, in-progress, or locked</li>
+      <li><strong>XP &amp; streak</strong> — to calculate level, display the XP bar, and motivate continued learning</li>
+      <li><strong>Badges &amp; milestones</strong> — to award and display earned achievements</li>
+      <li><strong>Weekly challenge completion</strong> — to prevent double-counting the same week's reward</li>
+      <li><strong>Nickname</strong> — to personalise the greeting on the home screen</li>
+      <li><strong>Parent PIN</strong> — to gate access to the Parent Dashboard</li>
+    </ul>
+    <p>
+      We do not use any of this data for advertising, profiling, or any purpose beyond
+      delivering the in-app experience described above.
+    </p>
+  </section>
+
+  <!-- 6. In-App Purchases -->
+  <section>
+    <h2>6. In-App Purchases &amp; Subscriptions</h2>
+    <p>
+      KidSpark Academy offers an optional <strong>Pro subscription</strong> (monthly and annual)
+      that unlocks Intermediate and Advanced lesson tiers. All purchases are processed
+      exclusively through <strong>Apple's App Store / StoreKit</strong>.
+    </p>
+    <ul>
+      <li>We never receive, store, or process your payment card or billing details.</li>
+      <li>Apple manages all subscription billing, renewals, and refunds.</li>
+      <li>The app only receives a cryptographically verified receipt confirming whether
+          a valid subscription exists — nothing more.</li>
+      <li>To manage or cancel your subscription, go to
+          <strong>Settings → [Your Name] → Subscriptions</strong> on your iPhone or iPad.</li>
+    </ul>
+    <p>
+      Apple's own privacy policy governs payment and purchase data:
+      <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">
+        apple.com/legal/privacy
+      </a>.
+    </p>
+  </section>
+
+  <!-- 7. Push Notifications -->
+  <section>
+    <h2>7. Local Notifications</h2>
+    <p>
+      KidSpark Academy can send <strong>local push notifications</strong> to remind learners
+      to maintain their streak or alert them to a new weekly challenge. These notifications are:
+    </p>
+    <ul>
+      <li>Scheduled entirely on your device using Apple's
+          <code>UNUserNotificationCenter</code> framework</li>
+      <li>Never sent from an external server — there is no push notification server</li>
+      <li>Never used to deliver advertising or sponsored content</li>
+    </ul>
+    <p>
+      You can enable or disable notifications at any time in
+      <strong>KidSpark Academy → Profile → Notifications</strong>, or via
+      <strong>iPhone Settings → Notifications → KidSpark Academy</strong>.
+    </p>
+  </section>
+
+  <!-- 8. Data sharing -->
+  <section>
+    <h2>8. Data Sharing &amp; Third Parties</h2>
+    <p>
+      <strong>We share no data with third parties.</strong> The app does not integrate:
+    </p>
+    <ul>
+      <li>Analytics platforms (Google Analytics, Firebase, Amplitude, Mixpanel, etc.)</li>
+      <li>Advertising networks (Google AdMob, Meta Audience Network, etc.)</li>
+      <li>Social login providers (Facebook, Google, etc.)</li>
+      <li>Crash reporting services (Crashlytics, Sentry, etc.)</li>
+      <li>Cloud storage or syncing services</li>
+    </ul>
+    <p>
+      The only third-party framework used is Apple's own <strong>StoreKit</strong> for
+      subscription management. All other app functionality is self-contained.
+    </p>
+  </section>
+
+  <!-- 9. Data security -->
+  <section>
+    <h2>9. Data Security</h2>
+    <p>
+      Because all data lives only on your device, its security depends on your device's
+      built-in protections:
+    </p>
+    <ul>
+      <li>SwiftData stores are protected by iOS data protection (AES-256 encryption
+          when the device is locked)</li>
+      <li>UserDefaults (used for the parent PIN) is protected by iOS app sandboxing</li>
+      <li>No data is transmitted over a network, so there is no risk of network interception</li>
+    </ul>
+    <p>
+      We recommend keeping your iPhone or iPad up to date with the latest iOS version
+      to benefit from Apple's ongoing security improvements.
+    </p>
+  </section>
+
+  <!-- 10. Data retention & deletion -->
+  <section>
+    <h2>10. Data Retention &amp; Deletion</h2>
+    <p>All data is stored on your device and is retained until you delete it:</p>
+    <ul>
+      <li>
+        <strong>Reset progress only:</strong> Go to
+        <em>Profile → Reset Progress</em> (requires confirmation). This clears XP, streak,
+        lesson history, badges, and challenge completions. Your Pro subscription is unaffected.
+      </li>
+      <li>
+        <strong>Delete the app:</strong> Uninstalling KidSpark Academy from your device
+        permanently deletes all SwiftData and UserDefaults entries, including the parent PIN.
+        This action cannot be undone.
+      </li>
+    </ul>
+    <p>
+      Because we hold no data on our servers, there is nothing for us to delete on our end —
+      all control rests with you.
+    </p>
+  </section>
+
+  <!-- 11. GDPR -->
+  <section>
+    <h2>11. Your Rights Under GDPR (European Users)</h2>
+    <p>
+      If you are located in the European Economic Area (EEA), United Kingdom, or Switzerland,
+      the General Data Protection Regulation (GDPR) grants you the following rights.
+      Because KidSpark Academy does not process personal data on external servers,
+      most of these rights are exercised directly on your device:
+    </p>
+    <ul>
+      <li><strong>Right of access</strong> — all data is visible inside the app (Progress tab, Parent Dashboard)</li>
+      <li><strong>Right to rectification</strong> — you can update your nickname in Profile</li>
+      <li><strong>Right to erasure</strong> — use Reset Progress or delete the app</li>
+      <li><strong>Right to data portability</strong> — not applicable (no external processing)</li>
+      <li><strong>Right to object</strong> — not applicable (no profiling or direct marketing)</li>
+    </ul>
+    <p>
+      The legal basis for processing under GDPR is <strong>legitimate interests</strong>
+      (operating the app's core features as described in Section 5). No consent is required
+      because no personal data is collected or transmitted.
+    </p>
+  </section>
+
+  <!-- 12. CCPA -->
+  <section>
+    <h2>12. California Privacy Rights (CCPA/CPRA)</h2>
+    <p>
+      California residents have rights under the California Consumer Privacy Act (CCPA) and
+      the California Privacy Rights Act (CPRA). KidSpark Academy does not sell or share
+      personal information with third parties. Because all data stays on your device,
+      the categories of personal information collected, sold, or disclosed for a business
+      purpose are: <strong>none</strong>.
+    </p>
+    <p>
+      California residents may submit privacy requests to
+      <a href="mailto:privacy@kidspark.academy">privacy@kidspark.academy</a>.
+    </p>
+  </section>
+
+  <!-- 13. Apple guidelines -->
+  <section>
+    <h2>13. Apple App Store Compliance</h2>
+    <p>
+      KidSpark Academy is published in the <strong>Kids</strong> category of the Apple App Store
+      and complies with all applicable App Store Review Guidelines, including:
+    </p>
+    <ul>
+      <li>
+        <strong>Guideline 1.3 (Kids Category):</strong> The app does not include behaviorally
+        targeted advertising. No advertising of any kind is shown.
+      </li>
+      <li>
+        <strong>Guideline 5.1.4 (Kids):</strong> The app does not collect personal information
+        from children without parental consent; no personal information is collected.
+      </li>
+      <li>
+        <strong>Guideline 5.1.1 (Data Collection and Storage):</strong> The app's privacy
+        nutrition label accurately reflects that no data is linked to a user's identity
+        or shared with third parties.
+      </li>
+    </ul>
+    <p>
+      Apple's own App Store privacy details for this app are available on the App Store listing
+      page under "App Privacy."
+    </p>
+  </section>
+
+  <!-- 14. Changes to policy -->
+  <section>
+    <h2>14. Changes to This Policy</h2>
+    <p>
+      We may update this Privacy Policy from time to time. When we do, we will:
+    </p>
+    <ul>
+      <li>Update the "Last updated" date at the top of this page</li>
+      <li>Post the new version at this URL</li>
+      <li>If changes are material, update the App Store "What's New" notes</li>
+    </ul>
+    <p>
+      Continued use of KidSpark Academy after a policy update constitutes acceptance of
+      the revised policy. We encourage parents and guardians to review this page periodically.
+    </p>
+  </section>
+
+  <!-- 15. Contact -->
+  <section>
+    <h2>15. Contact Us</h2>
+    <p>
+      If you have any questions, concerns, or requests regarding this Privacy Policy or
+      the privacy practices of KidSpark Academy, please contact us:
+    </p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:privacy@kidspark.academy">privacy@kidspark.academy</a></li>
+      <li><strong>Support:</strong> <a href="mailto:support@kidspark.academy">support@kidspark.academy</a></li>
+    </ul>
+    <p>
+      We aim to respond to all privacy inquiries within <strong>30 days</strong>.
+    </p>
+  </section>
+
+</main>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <p>
+    ⚡ <strong>KidSpark Academy</strong> &mdash; Privacy Policy<br>
+    Effective April 16, 2026 &nbsp;·&nbsp;
+    <a href="mailto:privacy@kidspark.academy">privacy@kidspark.academy</a>
+  </p>
+  <p style="margin-top:0.75rem; font-size:0.8rem; opacity:0.7;">
+    This policy complies with COPPA, GDPR, CCPA/CPRA, and Apple App Store Kids Category guidelines.
+  </p>
+</footer>
+
+</body>
+</html>
