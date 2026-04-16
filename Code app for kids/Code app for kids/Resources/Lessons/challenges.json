@@ -1,0 +1,119 @@
+[
+  {
+    "id": "ch_001",
+    "languageID": "swift",
+    "title": "Name that variable!",
+    "prompt": "In Swift, which keyword do you use to create a variable that CAN change later?",
+    "options": ["var", "let", "func", "class"],
+    "xpReward": 20,
+    "weekIndex": 0
+  },
+  {
+    "id": "ch_002",
+    "languageID": "python",
+    "title": "Print it out!",
+    "prompt": "Which Python function displays text on the screen?",
+    "options": ["print()", "show()", "display()", "write()"],
+    "xpReward": 20,
+    "weekIndex": 1
+  },
+  {
+    "id": "ch_003",
+    "languageID": "javascript",
+    "title": "Say Hello!",
+    "prompt": "In JavaScript, which method shows a message in the browser console?",
+    "options": ["console.log()", "print()", "alert()", "document.write()"],
+    "xpReward": 20,
+    "weekIndex": 2
+  },
+  {
+    "id": "ch_004",
+    "languageID": "scratch",
+    "title": "Move that sprite!",
+    "prompt": "In Scratch, which block makes your sprite walk forward?",
+    "options": ["move 10 steps", "go to x: 0 y: 0", "turn 90 degrees", "set x to 0"],
+    "xpReward": 20,
+    "weekIndex": 3
+  },
+  {
+    "id": "ch_005",
+    "languageID": "swift",
+    "title": "Loop it!",
+    "prompt": "Which Swift loop runs a block of code a specific number of times?",
+    "options": ["for _ in 1...5", "repeat { } while", "while true { }", "loop(5) { }"],
+    "xpReward": 25,
+    "weekIndex": 4
+  },
+  {
+    "id": "ch_006",
+    "languageID": "python",
+    "title": "List magic!",
+    "prompt": "How do you add an item to the END of a Python list called `fruits`?",
+    "options": ["fruits.append('mango')", "fruits.add('mango')", "fruits.push('mango')", "fruits.insert('mango')"],
+    "xpReward": 25,
+    "weekIndex": 5
+  },
+  {
+    "id": "ch_007",
+    "languageID": "javascript",
+    "title": "If this, do that!",
+    "prompt": "Which JavaScript keyword starts a conditional check?",
+    "options": ["if", "when", "check", "test"],
+    "xpReward": 20,
+    "weekIndex": 6
+  },
+  {
+    "id": "ch_008",
+    "languageID": "scratch",
+    "title": "Forever loop!",
+    "prompt": "Which Scratch block makes code run again and again without stopping?",
+    "options": ["forever", "repeat 10", "wait 1 secs", "when green flag clicked"],
+    "xpReward": 20,
+    "weekIndex": 7
+  },
+  {
+    "id": "ch_009",
+    "languageID": "swift",
+    "title": "Function fun!",
+    "prompt": "Which keyword defines a reusable block of code in Swift?",
+    "options": ["func", "def", "function", "method"],
+    "xpReward": 25,
+    "weekIndex": 8
+  },
+  {
+    "id": "ch_010",
+    "languageID": "python",
+    "title": "Boolean brain!",
+    "prompt": "In Python, which value is the opposite of True?",
+    "options": ["False", "false", "0", "None"],
+    "xpReward": 20,
+    "weekIndex": 9
+  },
+  {
+    "id": "ch_011",
+    "languageID": "html",
+    "title": "Tag team!",
+    "prompt": "Which HTML tag creates the largest heading on a webpage?",
+    "options": ["<h1>", "<h6>", "<big>", "<header>"],
+    "xpReward": 20,
+    "weekIndex": 10
+  },
+  {
+    "id": "ch_012",
+    "languageID": "lua",
+    "title": "Roblox ready!",
+    "prompt": "In Lua, which keyword do you use to create a scoped variable?",
+    "options": ["local", "var", "let", "dim"],
+    "xpReward": 20,
+    "weekIndex": 11
+  },
+  {
+    "id": "ch_013",
+    "languageID": "java",
+    "title": "Java print!",
+    "prompt": "Which Java statement prints text to the console?",
+    "options": ["System.out.println()", "print()", "console.log()", "echo()"],
+    "xpReward": 20,
+    "weekIndex": 12
+  }
+]

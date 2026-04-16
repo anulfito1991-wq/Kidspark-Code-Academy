@@ -1,0 +1,317 @@
+{
+  "languageID": "javascript",
+  "lessons": [
+    {
+      "id": "javascript-b1",
+      "languageID": "javascript",
+      "tier": "basics",
+      "order": 0,
+      "title": "Hello, JavaScript",
+      "summary": "Say hi from the web.",
+      "xpReward": 20,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "console.log",
+            "body": "In JavaScript, console.log prints messages you can see in the developer console.",
+            "codeSample": "console.log(\"Hello, world!\");"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which one prints in JavaScript?",
+            "options": ["print()", "console.log()", "echo()"],
+            "correctIndex": 1,
+            "explanation": "console.log is JavaScript's print."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Print the word Coding.",
+            "codeBefore": "console.log(",
+            "codeAfter": ");",
+            "choices": ["\"Coding\"", "Coding", ":Coding"],
+            "correctIndex": 0,
+            "explanation": "Wrap text in quotes."
+          }
+        }
+      ]
+    },
+    {
+      "id": "javascript-b2",
+      "languageID": "javascript",
+      "tier": "basics",
+      "order": 1,
+      "title": "let and const",
+      "summary": "Name a value you can use later.",
+      "xpReward": 25,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Two keywords",
+            "body": "Use const for values that won't change, and let for values that can.",
+            "codeSample": "const name = \"Ada\";\nlet score = 0;\nscore = score + 1;"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which keyword lets you change the value later?",
+            "options": ["const", "let", "var const"],
+            "correctIndex": 1,
+            "explanation": "let can be reassigned. const cannot."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Declare a constant called PI.",
+            "codeBefore": "",
+            "codeAfter": " PI = 3.14;",
+            "choices": ["const", "let", "def"],
+            "correctIndex": 0,
+            "explanation": "PI won't change — use const."
+          }
+        }
+      ]
+    },
+    {
+      "id": "javascript-b3",
+      "languageID": "javascript",
+      "tier": "basics",
+      "order": 2,
+      "title": "Numbers and math",
+      "summary": "Calculator time.",
+      "xpReward": 25,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Operators",
+            "body": "+ adds, - subtracts, * multiplies, / divides, % is remainder.",
+            "codeSample": "console.log(10 % 3);"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does 10 % 3 give?",
+            "options": ["3", "1", "0"],
+            "correctIndex": 1,
+            "explanation": "% is remainder. 10 divided by 3 is 3 with 1 left over."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Make sum equal 14.",
+            "codeBefore": "let sum = 7 ",
+            "codeAfter": " 2;",
+            "choices": ["*", "+", "-"],
+            "correctIndex": 0,
+            "explanation": "7 * 2 is 14."
+          }
+        }
+      ]
+    },
+    {
+      "id": "javascript-b4",
+      "languageID": "javascript",
+      "tier": "basics",
+      "order": 3,
+      "title": "Template strings",
+      "summary": "Drop values into text.",
+      "xpReward": 25,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Backticks",
+            "body": "Template strings use backticks and ${ } to slot values in.",
+            "codeSample": "const name = \"Sam\";\nconsole.log(`Hi, ${name}!`);"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which character starts a template string?",
+            "options": ["\"", "'", "`"],
+            "correctIndex": 2,
+            "explanation": "The backtick character `."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Insert score into the template string.",
+            "codeBefore": "console.log(`Score: ",
+            "codeAfter": "`);",
+            "choices": ["${score}", "{score}", "[score]"],
+            "correctIndex": 0,
+            "explanation": "${ } inserts a variable."
+          }
+        }
+      ]
+    },
+    {
+      "id": "javascript-b5",
+      "languageID": "javascript",
+      "tier": "basics",
+      "order": 4,
+      "title": "if / else",
+      "summary": "Make the code decide.",
+      "xpReward": 30,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Branching",
+            "body": "JavaScript uses if ( ) { } and optionally else { }.",
+            "codeSample": "const age = 10;\nif (age >= 13) {\n  console.log(\"Teen\");\n} else {\n  console.log(\"Kid\");\n}"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What goes around the condition in an if statement?",
+            "options": ["[ ]", "( )", "\" \""],
+            "correctIndex": 1,
+            "explanation": "Parentheses hold the condition."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Check if x is equal to 5 (strict).",
+            "codeBefore": "if (x ",
+            "codeAfter": " 5) {}",
+            "choices": ["===", "=", "=="],
+            "correctIndex": 0,
+            "explanation": "=== compares value and type."
+          }
+        }
+      ]
+    },
+    {
+      "id": "javascript-b6",
+      "languageID": "javascript",
+      "tier": "basics",
+      "order": 5,
+      "title": "for loops",
+      "summary": "Repeat blocks of code.",
+      "xpReward": 30,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Counted loops",
+            "body": "A for loop has three parts: start, condition, and update.",
+            "codeSample": "for (let i = 0; i < 3; i++) {\n  console.log(i);\n}"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does i++ do?",
+            "options": ["Stops the loop", "Adds 1 to i", "Prints i"],
+            "correctIndex": 1,
+            "explanation": "i++ is shorthand for i = i + 1."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Start a loop that runs 5 times.",
+            "codeBefore": "for (let i = 0; i ",
+            "codeAfter": " 5; i++) {}",
+            "choices": ["<", "<=", "="],
+            "correctIndex": 0,
+            "explanation": "< 5 with start 0 gives 5 loops."
+          }
+        }
+      ]
+    },
+    {
+      "id": "javascript-i1",
+      "languageID": "javascript",
+      "tier": "intermediate",
+      "order": 6,
+      "title": "Functions",
+      "summary": "Reusable blocks of behavior.",
+      "xpReward": 40,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Declaring a function",
+            "body": "Use function, a name, parameters in ( ), and a body in { }.",
+            "codeSample": "function greet(name) {\n  console.log(`Hi, ${name}!`);\n}\ngreet(\"Sam\");"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which keyword declares a classic JavaScript function?",
+            "options": ["def", "func", "function"],
+            "correctIndex": 2,
+            "explanation": "JavaScript uses function."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Start a function named wave.",
+            "codeBefore": "",
+            "codeAfter": " wave() {}",
+            "choices": ["function", "def", "let"],
+            "correctIndex": 0,
+            "explanation": "function is the keyword."
+          }
+        }
+      ]
+    },
+    {
+      "id": "javascript-i2",
+      "languageID": "javascript",
+      "tier": "intermediate",
+      "order": 7,
+      "title": "Arrays",
+      "summary": "Lists in square brackets.",
+      "xpReward": 40,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Making and reading arrays",
+            "body": "An array is an ordered list in [ ]. Use [index] to read, starting at 0.",
+            "codeSample": "const colors = [\"red\", \"green\", \"blue\"];\nconsole.log(colors[0]);"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does colors[2] print?",
+            "options": ["red", "green", "blue"],
+            "correctIndex": 2,
+            "explanation": "Index 2 is the third item."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Add \"yellow\" to the end of colors.",
+            "codeBefore": "colors.",
+            "codeAfter": "(\"yellow\");",
+            "choices": ["push", "add", "append"],
+            "correctIndex": 0,
+            "explanation": "push adds to the end of an array."
+          }
+        }
+      ]
+    }
+  ]
+}

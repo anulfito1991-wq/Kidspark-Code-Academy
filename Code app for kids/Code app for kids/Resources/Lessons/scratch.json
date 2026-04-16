@@ -1,0 +1,317 @@
+{
+  "languageID": "scratch",
+  "lessons": [
+    {
+      "id": "scratch-b1",
+      "languageID": "scratch",
+      "tier": "basics",
+      "order": 0,
+      "title": "What is a block?",
+      "summary": "Blocks snap together like puzzle pieces.",
+      "xpReward": 20,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Blocks, not text",
+            "body": "Block coding lets you drag blocks into place. Each block is an instruction for the computer.",
+            "codeSample": null
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does a block represent?",
+            "options": ["A picture", "An instruction", "A game"],
+            "correctIndex": 1,
+            "explanation": "A block is one step the computer will do."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "What do we call the color group that moves your sprite?",
+            "codeBefore": "",
+            "codeAfter": " blocks",
+            "choices": ["Motion", "Sound", "Looks"],
+            "correctIndex": 0,
+            "explanation": "Motion blocks change position."
+          }
+        }
+      ]
+    },
+    {
+      "id": "scratch-b2",
+      "languageID": "scratch",
+      "tier": "basics",
+      "order": 1,
+      "title": "Make the cat move",
+      "summary": "Tell the sprite where to go.",
+      "xpReward": 25,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "move 10 steps",
+            "body": "The \"move 10 steps\" block nudges your sprite forward by 10 steps.",
+            "codeSample": null
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which block moves a sprite?",
+            "options": ["play sound meow", "move 10 steps", "say Hello"],
+            "correctIndex": 1,
+            "explanation": "move 10 steps changes position."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Make the sprite move further — fill the number.",
+            "codeBefore": "move ",
+            "codeAfter": " steps",
+            "choices": ["50", "hello", "blue"],
+            "correctIndex": 0,
+            "explanation": "The move block takes a number."
+          }
+        }
+      ]
+    },
+    {
+      "id": "scratch-b3",
+      "languageID": "scratch",
+      "tier": "basics",
+      "order": 2,
+      "title": "Say and think",
+      "summary": "Make your sprite talk.",
+      "xpReward": 25,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Looks blocks",
+            "body": "The say block shows a speech bubble. Try \"say Hello for 2 seconds\".",
+            "codeSample": null
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which group has the say block?",
+            "options": ["Motion", "Looks", "Events"],
+            "correctIndex": 1,
+            "explanation": "say is a Looks block."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Complete: say ___ for 2 seconds",
+            "codeBefore": "say ",
+            "codeAfter": " for 2 seconds",
+            "choices": ["\"Hi!\"", "10", "forever"],
+            "correctIndex": 0,
+            "explanation": "say takes text, like \"Hi!\"."
+          }
+        }
+      ]
+    },
+    {
+      "id": "scratch-b4",
+      "languageID": "scratch",
+      "tier": "basics",
+      "order": 3,
+      "title": "Forever loop",
+      "summary": "Repeat something without stopping.",
+      "xpReward": 30,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "forever",
+            "body": "A forever block wraps other blocks and runs them over and over.",
+            "codeSample": null
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "How many times does forever run?",
+            "options": ["Once", "Ten times", "Until you stop it"],
+            "correctIndex": 2,
+            "explanation": "forever runs until the green flag is clicked off."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Wrap the move block so it repeats.",
+            "codeBefore": "",
+            "codeAfter": " { move 10 steps }",
+            "choices": ["forever", "if", "when"],
+            "correctIndex": 0,
+            "explanation": "forever wraps code to loop it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "scratch-b5",
+      "languageID": "scratch",
+      "tier": "basics",
+      "order": 4,
+      "title": "When flag clicked",
+      "summary": "Start your project.",
+      "xpReward": 30,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Events",
+            "body": "The \"when flag clicked\" block is the start of most projects.",
+            "codeSample": null
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What triggers the green flag block?",
+            "options": ["Pressing space", "Clicking the green flag", "Waiting"],
+            "correctIndex": 1,
+            "explanation": "It runs when the user clicks the green flag."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Complete: when ___ clicked",
+            "codeBefore": "when ",
+            "codeAfter": " clicked",
+            "choices": ["flag", "space", "sprite"],
+            "correctIndex": 0,
+            "explanation": "The green flag starts the project."
+          }
+        }
+      ]
+    },
+    {
+      "id": "scratch-b6",
+      "languageID": "scratch",
+      "tier": "basics",
+      "order": 5,
+      "title": "if-then blocks",
+      "summary": "Do something only when true.",
+      "xpReward": 30,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Decisions",
+            "body": "An \"if ___ then\" block checks a condition and runs blocks inside when it is true.",
+            "codeSample": null
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "When does the code inside an if-then run?",
+            "options": ["Always", "When the condition is true", "Never"],
+            "correctIndex": 1,
+            "explanation": "Only while the condition is true."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Check if touching color red.",
+            "codeBefore": "if ",
+            "codeAfter": " then",
+            "choices": ["<touching color red?>", "forever", "move 10"],
+            "correctIndex": 0,
+            "explanation": "The diamond slot holds a true/false block."
+          }
+        }
+      ]
+    },
+    {
+      "id": "scratch-i1",
+      "languageID": "scratch",
+      "tier": "intermediate",
+      "order": 6,
+      "title": "Variables in Scratch",
+      "summary": "Keep score, timers, and more.",
+      "xpReward": 40,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Make a variable",
+            "body": "Click \"Make a Variable\" to create one. Then use \"set\" or \"change\" blocks on it.",
+            "codeSample": null
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which block adds 1 to a variable called score?",
+            "options": ["set score to 1", "change score by 1", "say score"],
+            "correctIndex": 1,
+            "explanation": "change ... by N adds to the current value."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Add 10 to score.",
+            "codeBefore": "change score ",
+            "codeAfter": " 10",
+            "choices": ["by", "to", "=="],
+            "correctIndex": 0,
+            "explanation": "change score by 10 adds 10."
+          }
+        }
+      ]
+    },
+    {
+      "id": "scratch-i2",
+      "languageID": "scratch",
+      "tier": "intermediate",
+      "order": 7,
+      "title": "Make your own block",
+      "summary": "Wrap a bunch of blocks into one.",
+      "xpReward": 40,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "My Blocks",
+            "body": "Custom blocks group steps so your code is tidy. Think of them like naming a recipe.",
+            "codeSample": null
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Why use a custom block?",
+            "options": ["Make code longer", "Reuse a group of steps", "Add sounds"],
+            "correctIndex": 1,
+            "explanation": "Custom blocks let you reuse and rename logic."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Which tab creates custom blocks?",
+            "codeBefore": "",
+            "codeAfter": " tab",
+            "choices": ["My Blocks", "Motion", "Sound"],
+            "correctIndex": 0,
+            "explanation": "My Blocks is for custom blocks."
+          }
+        }
+      ]
+    }
+  ]
+}

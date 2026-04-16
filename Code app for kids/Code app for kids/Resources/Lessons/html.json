@@ -1,0 +1,239 @@
+{
+  "languageID": "html",
+  "lessons": [
+    {
+      "id": "html-b1",
+      "languageID": "html",
+      "tier": "basics",
+      "order": 0,
+      "title": "Your First Webpage",
+      "summary": "Write HTML tags that browsers understand.",
+      "xpReward": 20,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Tags are HTML's building blocks",
+            "body": "HTML uses tags like <h1> to tell the browser what to show. An opening tag <h1> and closing tag </h1> wrap the content.",
+            "codeSample": "<h1>Hello, World!</h1>"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does <h1> create on a webpage?",
+            "options": ["A big heading", "A button", "A list", "A link"],
+            "correctIndex": 0,
+            "explanation": "<h1> is the largest heading tag — it makes text big and bold."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Close the heading tag correctly.",
+            "codeBefore": "<h1>KidSpark",
+            "codeAfter": "",
+            "choices": ["</h1>", "<h1/>", "<end>"],
+            "correctIndex": 0,
+            "explanation": "Closing tags have a / before the tag name."
+          }
+        }
+      ]
+    },
+    {
+      "id": "html-b2",
+      "languageID": "html",
+      "tier": "basics",
+      "order": 1,
+      "title": "Paragraphs of Text",
+      "summary": "Use <p> to add paragraphs to your page.",
+      "xpReward": 20,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "The paragraph tag",
+            "body": "Wrap any block of text in <p> and </p> to make a paragraph. Browsers add a little space above and below automatically.",
+            "codeSample": "<p>I am learning HTML today!</p>"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which tag is used for a paragraph of text?",
+            "options": ["<p>", "<para>", "<text>", "<body>"],
+            "correctIndex": 0,
+            "explanation": "<p> stands for paragraph."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Wrap this sentence in a paragraph tag.",
+            "codeBefore": "",
+            "codeAfter": "Coding is fun!</p>",
+            "choices": ["<p>", "<h1>", "<div>"],
+            "correctIndex": 0,
+            "explanation": "<p> opens a paragraph, </p> closes it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "html-b3",
+      "languageID": "html",
+      "tier": "basics",
+      "order": 2,
+      "title": "Clickable Links",
+      "summary": "Use <a href> to link to another page.",
+      "xpReward": 25,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Anchor tags make links",
+            "body": "The <a> tag creates a link. The href attribute tells the browser where to go when clicked.",
+            "codeSample": "<a href=\"https://example.com\">Click me!</a>"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which attribute holds the URL in an <a> tag?",
+            "options": ["href", "src", "link", "url"],
+            "correctIndex": 0,
+            "explanation": "href stands for Hypertext REFerence — the destination address."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Complete the link tag attribute.",
+            "codeBefore": "<a ",
+            "codeAfter": "=\"https://kidspark.com\">Visit KidSpark</a>",
+            "choices": ["href", "src", "link"],
+            "correctIndex": 0,
+            "explanation": "href is the attribute that holds the link destination."
+          }
+        }
+      ]
+    },
+    {
+      "id": "html-b4",
+      "languageID": "html",
+      "tier": "basics",
+      "order": 3,
+      "title": "Adding Images",
+      "summary": "Use <img> to show pictures on your page.",
+      "xpReward": 25,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Images with <img>",
+            "body": "<img> is a self-closing tag — it doesn't need </img>. The src attribute points to the image file, and alt describes it for screen readers.",
+            "codeSample": "<img src=\"cat.png\" alt=\"A fluffy cat\">"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does the src attribute in <img> do?",
+            "options": ["Points to the image file", "Sets the image size", "Adds a border", "Links to a page"],
+            "correctIndex": 0,
+            "explanation": "src is short for source — it tells the browser where to find the image."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Add the correct attribute to show an image.",
+            "codeBefore": "<img ",
+            "codeAfter": "=\"logo.png\" alt=\"Logo\">",
+            "choices": ["src", "href", "img"],
+            "correctIndex": 0,
+            "explanation": "src tells the browser where the image lives."
+          }
+        }
+      ]
+    },
+    {
+      "id": "html-b5",
+      "languageID": "html",
+      "tier": "basics",
+      "order": 4,
+      "title": "Building Lists",
+      "summary": "Use <ul> and <li> to make bullet lists.",
+      "xpReward": 25,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Unordered lists",
+            "body": "<ul> creates a bullet list. Each item goes inside <li> (list item) tags. Use <ol> instead of <ul> for numbered lists.",
+            "codeSample": "<ul>\n  <li>Swift</li>\n  <li>Python</li>\n  <li>HTML</li>\n</ul>"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does <li> stand for?",
+            "options": ["List item", "Line indent", "Link image", "Large italic"],
+            "correctIndex": 0,
+            "explanation": "li = list item. It goes inside <ul> or <ol>."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Start a bullet list.",
+            "codeBefore": "",
+            "codeAfter": ">\n  <li>Apple</li>\n</ul>",
+            "choices": ["<ul", "<ol", "<list"],
+            "correctIndex": 0,
+            "explanation": "<ul> creates an unordered (bullet) list."
+          }
+        }
+      ]
+    },
+    {
+      "id": "html-b6",
+      "languageID": "html",
+      "tier": "basics",
+      "order": 5,
+      "title": "Style with CSS",
+      "summary": "Change colors and sizes with CSS.",
+      "xpReward": 30,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "CSS makes pages beautiful",
+            "body": "CSS stands for Cascading Style Sheets. You can write CSS inside a <style> tag and target HTML elements by name. Use color to change text color.",
+            "codeSample": "<style>\n  h1 {\n    color: purple;\n  }\n</style>"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does CSS control?",
+            "options": ["Visual appearance", "Page content", "Links only", "Server logic"],
+            "correctIndex": 0,
+            "explanation": "CSS controls colors, fonts, sizes, spacing — everything visual."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Pick the CSS property that changes text color.",
+            "codeBefore": "h1 { ",
+            "codeAfter": ": red; }",
+            "choices": ["color", "font", "background"],
+            "correctIndex": 0,
+            "explanation": "The color property sets the text color of an element."
+          }
+        }
+      ]
+    }
+  ]
+}

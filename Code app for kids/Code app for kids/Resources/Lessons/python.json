@@ -1,0 +1,317 @@
+{
+  "languageID": "python",
+  "lessons": [
+    {
+      "id": "python-b1",
+      "languageID": "python",
+      "tier": "basics",
+      "order": 0,
+      "title": "Hello, Python",
+      "summary": "Your first Python program.",
+      "xpReward": 20,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "print()",
+            "body": "Python uses print() to show things. Put what you want to show inside the parentheses.",
+            "codeSample": "print(\"Hello, world!\")"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does print(\"Hi\") do?",
+            "options": ["Makes a file", "Shows Hi on screen", "Sends an email"],
+            "correctIndex": 1,
+            "explanation": "print puts text in the output."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Print the word Python.",
+            "codeBefore": "print(",
+            "codeAfter": ")",
+            "choices": ["\"Python\"", "Python", "=Python"],
+            "correctIndex": 0,
+            "explanation": "Text goes inside quotes."
+          }
+        }
+      ]
+    },
+    {
+      "id": "python-b2",
+      "languageID": "python",
+      "tier": "basics",
+      "order": 1,
+      "title": "Variables hold values",
+      "summary": "Give a value a name you can reuse.",
+      "xpReward": 25,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Assigning values",
+            "body": "Python uses = to put a value into a name. No keyword needed.",
+            "codeSample": "name = \"Ada\"\nscore = 10\nprint(name)"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What symbol assigns a value in Python?",
+            "options": ["==", "=", "->"],
+            "correctIndex": 1,
+            "explanation": "Single = assigns. Double == checks equality."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Store 42 in a variable called answer.",
+            "codeBefore": "answer ",
+            "codeAfter": " 42",
+            "choices": ["=", "==", ":="],
+            "correctIndex": 0,
+            "explanation": "= is assignment."
+          }
+        }
+      ]
+    },
+    {
+      "id": "python-b3",
+      "languageID": "python",
+      "tier": "basics",
+      "order": 2,
+      "title": "Math with Python",
+      "summary": "Use Python as a calculator.",
+      "xpReward": 25,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Operators",
+            "body": "Python knows +, -, *, /. It also has ** for powers.",
+            "codeSample": "print(2 + 3)\nprint(2 ** 3)"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does 2 ** 3 give?",
+            "options": ["5", "6", "8"],
+            "correctIndex": 2,
+            "explanation": "** is power. 2 * 2 * 2 = 8."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Make total equal 20.",
+            "codeBefore": "total = 4 ",
+            "codeAfter": " 5",
+            "choices": ["*", "+", "-"],
+            "correctIndex": 0,
+            "explanation": "4 * 5 is 20."
+          }
+        }
+      ]
+    },
+    {
+      "id": "python-b4",
+      "languageID": "python",
+      "tier": "basics",
+      "order": 3,
+      "title": "Strings and f-strings",
+      "summary": "Mix words and values.",
+      "xpReward": 25,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "f-strings",
+            "body": "An f-string lets you drop variables into text using { }.",
+            "codeSample": "name = \"Sam\"\nprint(f\"Hi, {name}!\")"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What comes before the quotes in an f-string?",
+            "options": ["p", "f", "s"],
+            "correctIndex": 1,
+            "explanation": "f\"...\" makes it a formatted string."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Print \"Score: 7\" using score = 7.",
+            "codeBefore": "print(f\"Score: ",
+            "codeAfter": "\")",
+            "choices": ["{score}", "score", "[score]"],
+            "correctIndex": 0,
+            "explanation": "Curly braces insert the value."
+          }
+        }
+      ]
+    },
+    {
+      "id": "python-b5",
+      "languageID": "python",
+      "tier": "basics",
+      "order": 4,
+      "title": "if / elif / else",
+      "summary": "Let your program decide.",
+      "xpReward": 30,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Branching",
+            "body": "Python uses if, elif, and else with a colon and indent.",
+            "codeSample": "age = 12\nif age >= 13:\n    print(\"Teen\")\nelse:\n    print(\"Kid\")"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "How do you finish an if line in Python?",
+            "options": ["With a ;", "With a :", "With { }"],
+            "correctIndex": 1,
+            "explanation": "Python uses a colon and then an indented block."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Check if score equals 10.",
+            "codeBefore": "if score ",
+            "codeAfter": " 10:",
+            "choices": ["==", "=", "!"],
+            "correctIndex": 0,
+            "explanation": "== checks equality. = would assign."
+          }
+        }
+      ]
+    },
+    {
+      "id": "python-b6",
+      "languageID": "python",
+      "tier": "basics",
+      "order": 5,
+      "title": "for loops and range",
+      "summary": "Repeat with ease.",
+      "xpReward": 30,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Looping",
+            "body": "range(n) gives numbers 0 up to n-1. for loops over them.",
+            "codeSample": "for i in range(3):\n    print(i)"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What prints from range(3)?",
+            "options": ["1, 2, 3", "0, 1, 2", "3, 3, 3"],
+            "correctIndex": 1,
+            "explanation": "range(3) is 0, 1, 2."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Repeat 5 times.",
+            "codeBefore": "for i in ",
+            "codeAfter": "(5):",
+            "choices": ["range", "loop", "times"],
+            "correctIndex": 0,
+            "explanation": "range makes a sequence of numbers."
+          }
+        }
+      ]
+    },
+    {
+      "id": "python-i1",
+      "languageID": "python",
+      "tier": "intermediate",
+      "order": 6,
+      "title": "Functions with def",
+      "summary": "Group code you can reuse.",
+      "xpReward": 40,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Defining a function",
+            "body": "Use def, a name, parameters in (), and an indented body.",
+            "codeSample": "def greet(name):\n    print(f\"Hi, {name}!\")\ngreet(\"Sam\")"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which keyword starts a Python function?",
+            "options": ["function", "def", "fun"],
+            "correctIndex": 1,
+            "explanation": "Python uses def."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Start a function named shout.",
+            "codeBefore": "",
+            "codeAfter": " shout():",
+            "choices": ["def", "func", "do"],
+            "correctIndex": 0,
+            "explanation": "def declares a function in Python."
+          }
+        }
+      ]
+    },
+    {
+      "id": "python-i2",
+      "languageID": "python",
+      "tier": "intermediate",
+      "order": 7,
+      "title": "Lists",
+      "summary": "A row of values.",
+      "xpReward": 40,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Make a list",
+            "body": "A list uses [ ]. You can read by index, starting at 0.",
+            "codeSample": "fruits = [\"apple\", \"kiwi\", \"pear\"]\nprint(fruits[1])"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What prints from fruits[1]?",
+            "options": ["apple", "kiwi", "pear"],
+            "correctIndex": 1,
+            "explanation": "Index 1 is the second item."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Add 'berry' to the end of fruits.",
+            "codeBefore": "fruits.",
+            "codeAfter": "(\"berry\")",
+            "choices": ["append", "add", "push"],
+            "correctIndex": 0,
+            "explanation": "append adds to the end of a list."
+          }
+        }
+      ]
+    }
+  ]
+}

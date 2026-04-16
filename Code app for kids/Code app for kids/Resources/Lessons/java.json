@@ -1,0 +1,239 @@
+{
+  "languageID": "java",
+  "lessons": [
+    {
+      "id": "java-b1",
+      "languageID": "java",
+      "tier": "basics",
+      "order": 0,
+      "title": "Hello, Java!",
+      "summary": "Write your first Java program.",
+      "xpReward": 20,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Every Java program has a main method",
+            "body": "Java needs a class and a main method to run. System.out.println() is how you print text. It looks long, but you'll memorize it fast!",
+            "codeSample": "public class Hello {\n  public static void main(String[] args) {\n    System.out.println(\"Hello, Java!\");\n  }\n}"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "How do you print text in Java?",
+            "options": ["System.out.println()", "print()", "console.log()", "echo()"],
+            "correctIndex": 0,
+            "explanation": "System.out.println() prints a line of text in Java."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Complete the print statement.",
+            "codeBefore": "System.out.",
+            "codeAfter": "(\"Hello!\");",
+            "choices": ["println", "print", "write"],
+            "correctIndex": 0,
+            "explanation": "println prints text and moves to the next line."
+          }
+        }
+      ]
+    },
+    {
+      "id": "java-b2",
+      "languageID": "java",
+      "tier": "basics",
+      "order": 1,
+      "title": "Types & Variables",
+      "summary": "Declare variables with their type in Java.",
+      "xpReward": 20,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Java is a typed language",
+            "body": "In Java, you must say what type a variable is before naming it. int for whole numbers, double for decimals, String for text, boolean for true/false.",
+            "codeSample": "int score = 100;\nString name = \"Alex\";\nboolean isWinner = true;"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which type holds whole numbers in Java?",
+            "options": ["int", "String", "boolean", "float"],
+            "correctIndex": 0,
+            "explanation": "int stores whole numbers like 0, 42, or -7."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Declare a whole-number variable called lives with value 3.",
+            "codeBefore": "",
+            "codeAfter": " lives = 3;",
+            "choices": ["int", "String", "boolean"],
+            "correctIndex": 0,
+            "explanation": "int is the type for whole numbers in Java."
+          }
+        }
+      ]
+    },
+    {
+      "id": "java-b3",
+      "languageID": "java",
+      "tier": "basics",
+      "order": 2,
+      "title": "String Power",
+      "summary": "Combine and use text strings.",
+      "xpReward": 20,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Strings hold text",
+            "body": "A String in Java is text surrounded by double quotes. You can join two strings with + — called concatenation.",
+            "codeSample": "String first = \"Kid\";\nString last = \"Spark\";\nString full = first + last;\nSystem.out.println(full); // KidSpark"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "How do you join two Strings in Java?",
+            "options": ["Use +", "Use .join()", "Use &", "Use ,"],
+            "correctIndex": 0,
+            "explanation": "The + operator concatenates (joins) Strings in Java."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Join the two strings with the correct operator.",
+            "codeBefore": "String greeting = \"Hello \" ",
+            "codeAfter": " \"World\";",
+            "choices": ["+", "&", ","],
+            "correctIndex": 0,
+            "explanation": "+ joins (concatenates) strings in Java."
+          }
+        }
+      ]
+    },
+    {
+      "id": "java-b4",
+      "languageID": "java",
+      "tier": "basics",
+      "order": 3,
+      "title": "If / Else",
+      "summary": "Make decisions with conditions.",
+      "xpReward": 25,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Branching with if / else",
+            "body": "Java uses curly braces { } to group the code that runs when a condition is true. else runs when it's false.",
+            "codeSample": "int score = 85;\nif (score >= 90) {\n  System.out.println(\"A grade!\");\n} else {\n  System.out.println(\"Keep trying!\");\n}"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "In Java, what wraps the condition in an if statement?",
+            "options": ["Parentheses ( )", "Curly braces { }", "Square brackets [ ]", "Quotes \" \""],
+            "correctIndex": 0,
+            "explanation": "The condition goes in ( ) and the code block goes in { }."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Choose the correct comparison operator for 'greater than or equal to'.",
+            "codeBefore": "if (lives ",
+            "codeAfter": " 1) {\n  System.out.println(\"Still alive!\");\n}",
+            "choices": [">=", "=>", ">>"],
+            "correctIndex": 0,
+            "explanation": ">= means 'greater than or equal to'."
+          }
+        }
+      ]
+    },
+    {
+      "id": "java-b5",
+      "languageID": "java",
+      "tier": "basics",
+      "order": 4,
+      "title": "For Loops",
+      "summary": "Repeat code with a counting loop.",
+      "xpReward": 25,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "The classic Java for loop",
+            "body": "Java's for loop has three parts: start, condition, step. It's used everywhere — from printing tables to processing lists.",
+            "codeSample": "for (int i = 1; i <= 5; i++) {\n  System.out.println(\"Round \" + i);\n}"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does i++ mean in a Java for loop?",
+            "options": ["Add 1 to i each loop", "Print i", "Stop the loop", "Start i at 1"],
+            "correctIndex": 0,
+            "explanation": "i++ is shorthand for i = i + 1 — it increments i by 1 each iteration."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Pick the correct step expression to count up by 1.",
+            "codeBefore": "for (int i = 0; i < 10; ",
+            "codeAfter": ") {\n  System.out.println(i);\n}",
+            "choices": ["i++", "i+1", "i+=0"],
+            "correctIndex": 0,
+            "explanation": "i++ increments i by 1 after each loop iteration."
+          }
+        }
+      ]
+    },
+    {
+      "id": "java-b6",
+      "languageID": "java",
+      "tier": "basics",
+      "order": 5,
+      "title": "Methods",
+      "summary": "Write a reusable method in Java.",
+      "xpReward": 30,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Methods are Java's functions",
+            "body": "A method is a named block of code you can call anytime. void means it doesn't return a value. static lets you call it from main without creating an object.",
+            "codeSample": "static void celebrate() {\n  System.out.println(\"You did it! 🎉\");\n}\n\n// Call it:\ncelebrate();"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does void mean in a method definition?",
+            "options": ["The method returns nothing", "The method is empty", "The method is private", "The method runs once"],
+            "correctIndex": 0,
+            "explanation": "void means the method performs an action but doesn't send a value back."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Choose the return type for a method that prints but returns nothing.",
+            "codeBefore": "static ",
+            "codeAfter": " greet() {\n  System.out.println(\"Hi!\");\n}",
+            "choices": ["void", "int", "String"],
+            "correctIndex": 0,
+            "explanation": "void signals the method gives nothing back to the caller."
+          }
+        }
+      ]
+    }
+  ]
+}
