@@ -312,6 +312,240 @@
           }
         }
       ]
+    },
+    {
+      "id": "python-i3",
+      "languageID": "python",
+      "tier": "intermediate",
+      "order": 8,
+      "title": "Dictionaries",
+      "summary": "Store values by name, not position.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Key-value pairs",
+            "body": "A dictionary pairs keys with values. Use { } to make one, and [key] to read a value. Great for game scores, settings, or user data.",
+            "codeSample": "ages = {\"Ada\": 12, \"Sam\": 10}\nprint(ages[\"Sam\"])"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does ages[\"Ada\"] give?",
+            "options": ["Ada", "12", "10"],
+            "correctIndex": 1,
+            "explanation": "Looking up the key \"Ada\" returns its value, 12."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Add a new name and age.",
+            "codeBefore": "ages[",
+            "codeAfter": "] = 9",
+            "choices": ["\"Jo\"", "Jo", "0"],
+            "correctIndex": 0,
+            "explanation": "String keys need quotes around them."
+          }
+        }
+      ]
+    },
+    {
+      "id": "python-i4",
+      "languageID": "python",
+      "tier": "intermediate",
+      "order": 9,
+      "title": "Returning values",
+      "summary": "Get something back from a function.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "return",
+            "body": "Functions can hand a value back with return. Save the result in a variable or use it directly.",
+            "codeSample": "def double(x):\n    return x * 2\nresult = double(5)\nprint(result) # 10"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does return do?",
+            "options": ["Restarts the function", "Sends a value back to the caller", "Prints to the screen"],
+            "correctIndex": 1,
+            "explanation": "return ends the function and gives the value back."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Return the square of x.",
+            "codeBefore": "def square(x):\n    ",
+            "codeAfter": " x * x",
+            "choices": ["return", "print", "yield"],
+            "correctIndex": 0,
+            "explanation": "return hands the value to whoever called the function."
+          }
+        }
+      ]
+    },
+    {
+      "id": "python-i5",
+      "languageID": "python",
+      "tier": "intermediate",
+      "order": 10,
+      "title": "Tuples and sets",
+      "summary": "Two more ways to group values.",
+      "xpReward": 50,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Immutable and unique",
+            "body": "A tuple uses ( ) and can't be changed after you make it — great for fixed data like coordinates. A set uses { } and keeps only unique values.",
+            "codeSample": "point = (3, 4)      # tuple\ntags = {\"fun\", \"easy\", \"fun\"}  # set → {\"fun\", \"easy\"}"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What makes a set special?",
+            "options": ["It stores keys", "It removes duplicates", "It's always sorted"],
+            "correctIndex": 1,
+            "explanation": "A set automatically drops duplicate values."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Create a tuple with the colors red and blue.",
+            "codeBefore": "colors = ",
+            "codeAfter": "",
+            "choices": ["(\"red\", \"blue\")", "[\"red\", \"blue\"]", "{\"red\", \"blue\"}"],
+            "correctIndex": 0,
+            "explanation": "Parentheses make a tuple; square brackets make a list."
+          }
+        }
+      ]
+    },
+    {
+      "id": "python-a1",
+      "languageID": "python",
+      "tier": "advanced",
+      "order": 11,
+      "title": "Classes and objects",
+      "summary": "Design your own types.",
+      "xpReward": 60,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "class, __init__, and self",
+            "body": "A class is a blueprint. __init__ runs when you create a new object. self is the object itself — use self.name to store data on it.",
+            "codeSample": "class Dog:\n    def __init__(self, name):\n        self.name = name\n    def bark(self):\n        print(f\"{self.name} says woof!\")\nDog(\"Rex\").bark()"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What is self in a Python class?",
+            "options": ["The class name", "The current object", "The computer"],
+            "correctIndex": 1,
+            "explanation": "self refers to the specific object you're working with right now."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Finish the class declaration.",
+            "codeBefore": "",
+            "codeAfter": " Cat:\n    pass",
+            "choices": ["class", "def", "struct"],
+            "correctIndex": 0,
+            "explanation": "class starts a class definition in Python."
+          }
+        }
+      ]
+    },
+    {
+      "id": "python-a2",
+      "languageID": "python",
+      "tier": "advanced",
+      "order": 12,
+      "title": "List comprehensions",
+      "summary": "Build lists in one clean line.",
+      "xpReward": 65,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Shorthand for loops",
+            "body": "A list comprehension builds a new list from an old one in a single line. Pattern: [expression for item in list if condition].",
+            "codeSample": "nums = [1, 2, 3, 4]\nevens = [n for n in nums if n % 2 == 0]\nprint(evens) # [2, 4]"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does [x*2 for x in [1,2,3]] produce?",
+            "options": ["[1, 2, 3]", "[2, 4, 6]", "[1, 4, 9]"],
+            "correctIndex": 1,
+            "explanation": "Each value is doubled: 1*2, 2*2, 3*2 = 2, 4, 6."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Keep only the positive numbers.",
+            "codeBefore": "result = [n for n in nums ",
+            "codeAfter": " n > 0]",
+            "choices": ["if", "when", "where"],
+            "correctIndex": 0,
+            "explanation": "if filters the items before they go into the new list."
+          }
+        }
+      ]
+    },
+    {
+      "id": "python-a3",
+      "languageID": "python",
+      "tier": "advanced",
+      "order": 13,
+      "title": "Reading from files",
+      "summary": "Open a file and read its contents.",
+      "xpReward": 70,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "with open(...) as f",
+            "body": "The with block opens a file and automatically closes it when you're done — no leaks. Use f.read() to grab everything, or loop over f to read line by line.",
+            "codeSample": "with open(\"notes.txt\") as f:\n    text = f.read()\nprint(text)"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Why use with open() instead of just open()?",
+            "options": ["It's faster", "It closes the file automatically", "It makes the file bigger"],
+            "correctIndex": 1,
+            "explanation": "The with block cleans up — you can't forget to close the file."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Open the file in read mode.",
+            "codeBefore": "with open(\"data.txt\", ",
+            "codeAfter": ") as f:",
+            "choices": ["\"r\"", "\"w\"", "\"a\""],
+            "correctIndex": 0,
+            "explanation": "\"r\" is read mode; \"w\" is write; \"a\" is append."
+          }
+        }
+      ]
     }
   ]
 }

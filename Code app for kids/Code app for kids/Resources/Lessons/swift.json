@@ -312,6 +312,240 @@
           }
         }
       ]
+    },
+    {
+      "id": "swift-i3",
+      "languageID": "swift",
+      "tier": "intermediate",
+      "order": 8,
+      "title": "Dictionaries: key-value pairs",
+      "summary": "Look things up by name, not by position.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "A box with labels",
+            "body": "A dictionary stores values with named keys. Use square brackets with the key to get a value back. Perfect for scores, settings, or anything you'd look up by name.",
+            "codeSample": "let scores = [\"Ada\": 95, \"Sam\": 88]\nprint(scores[\"Ada\"]!)"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "How do you look up Sam's score?",
+            "options": ["scores[1]", "scores[\"Sam\"]", "scores.Sam"],
+            "correctIndex": 1,
+            "explanation": "Use the key in square brackets. Swift dictionaries are accessed by key, not index."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Add a new name and score to the dictionary.",
+            "codeBefore": "scores[",
+            "codeAfter": "] = 100",
+            "choices": ["\"Jo\"", "Jo", "0"],
+            "correctIndex": 0,
+            "explanation": "Dictionary keys need quotes when they're strings."
+          }
+        }
+      ]
+    },
+    {
+      "id": "swift-i4",
+      "languageID": "swift",
+      "tier": "intermediate",
+      "order": 9,
+      "title": "Optionals — maybe a value",
+      "summary": "Handle things that might be missing.",
+      "xpReward": 50,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "? means maybe",
+            "body": "An optional is a box that might have a value or might be empty (nil). The ? after a type makes it optional. Use if let to safely open the box only when there's something inside.",
+            "codeSample": "let age: Int? = 12\nif let a = age {\n    print(\"Age is \\(a)\")\n} else {\n    print(\"No age\")\n}"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does nil mean in Swift?",
+            "options": ["Zero", "An empty string", "No value at all"],
+            "correctIndex": 2,
+            "explanation": "nil means the optional is truly empty — no value, not even zero."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Mark the variable as optional (could be nil).",
+            "codeBefore": "var name: String",
+            "codeAfter": " = nil",
+            "choices": ["?", "!", "*"],
+            "correctIndex": 0,
+            "explanation": "? after the type makes it optional so it can hold nil."
+          }
+        }
+      ]
+    },
+    {
+      "id": "swift-i5",
+      "languageID": "swift",
+      "tier": "intermediate",
+      "order": 10,
+      "title": "Structs — your own types",
+      "summary": "Group related data into a new type.",
+      "xpReward": 50,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Bundle properties together",
+            "body": "A struct is a blueprint for your own custom type. It holds properties that go together — like a Player with a name and a score. Swift gives you a free initializer based on the properties.",
+            "codeSample": "struct Player {\n    var name: String\n    var score: Int\n}\nlet p = Player(name: \"Ada\", score: 95)\nprint(p.score)"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Why use a struct instead of separate variables?",
+            "options": ["It runs faster", "It groups related data with a name", "It saves memory"],
+            "correctIndex": 1,
+            "explanation": "Structs let you treat related data as one thing — cleaner code that's easier to read."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Declare a struct called Book.",
+            "codeBefore": "",
+            "codeAfter": " Book { var title: String }",
+            "choices": ["struct", "class", "type"],
+            "correctIndex": 0,
+            "explanation": "struct is the keyword for a Swift structure type."
+          }
+        }
+      ]
+    },
+    {
+      "id": "swift-a1",
+      "languageID": "swift",
+      "tier": "advanced",
+      "order": 11,
+      "title": "Classes and objects",
+      "summary": "Blueprints for things that have behavior too.",
+      "xpReward": 60,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Classes can do things",
+            "body": "A class is like a struct but it can be inherited and shared. You create an object (an instance) and call methods on it. This is how big apps are built.",
+            "codeSample": "class Dog {\n    var name: String\n    init(name: String) { self.name = name }\n    func bark() { print(\"\\(name) says woof!\") }\n}\nlet d = Dog(name: \"Rex\")\nd.bark()"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does init do in a class?",
+            "options": ["Prints the object", "Sets up a new instance", "Deletes the object"],
+            "correctIndex": 1,
+            "explanation": "init runs when you create a new object — it sets the initial values."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Call the bark method on the dog.",
+            "codeBefore": "d.",
+            "codeAfter": "()",
+            "choices": ["bark", "Bark", "print"],
+            "correctIndex": 0,
+            "explanation": "Method names in Swift start lowercase and use camelCase."
+          }
+        }
+      ]
+    },
+    {
+      "id": "swift-a2",
+      "languageID": "swift",
+      "tier": "advanced",
+      "order": 12,
+      "title": "Protocols — promises your type keeps",
+      "summary": "Describe what a type can do, not how.",
+      "xpReward": 65,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "A shape to fit into",
+            "body": "A protocol lists methods and properties. Any type that adopts the protocol promises to implement them. This lets different types work together as long as they keep the same promise.",
+            "codeSample": "protocol Greetable {\n    func greet()\n}\nstruct Robot: Greetable {\n    func greet() { print(\"Beep!\") }\n}\nRobot().greet()"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does 'Robot: Greetable' mean?",
+            "options": ["Robot inherits from Greetable", "Robot adopts the Greetable protocol", "Robot imports Greetable"],
+            "correctIndex": 1,
+            "explanation": "The colon means Robot conforms to — adopts — the Greetable protocol."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Declare a protocol called Movable.",
+            "codeBefore": "",
+            "codeAfter": " Movable { func move() }",
+            "choices": ["protocol", "class", "struct"],
+            "correctIndex": 0,
+            "explanation": "protocol is the keyword for declaring a protocol."
+          }
+        }
+      ]
+    },
+    {
+      "id": "swift-a3",
+      "languageID": "swift",
+      "tier": "advanced",
+      "order": 13,
+      "title": "Closures — tiny functions",
+      "summary": "Pass code around like a value.",
+      "xpReward": 70,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Code you can hand to something else",
+            "body": "A closure is a block of code in { } that you can store in a variable or pass to a function. Swift's sort, filter, and map methods all take closures.",
+            "codeSample": "let numbers = [3, 1, 2]\nlet sorted = numbers.sorted { $0 < $1 }\nprint(sorted) // [1, 2, 3]"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does $0 mean inside a closure?",
+            "options": ["The money sign", "The first argument", "A special error"],
+            "correctIndex": 1,
+            "explanation": "$0 is the first argument, $1 is the second, and so on — shorthand for closures."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Double every number in the array.",
+            "codeBefore": "numbers.map { $0 ",
+            "codeAfter": " 2 }",
+            "choices": ["*", "+", "/"],
+            "correctIndex": 0,
+            "explanation": "Multiply by 2 to double each value."
+          }
+        }
+      ]
     }
   ]
 }

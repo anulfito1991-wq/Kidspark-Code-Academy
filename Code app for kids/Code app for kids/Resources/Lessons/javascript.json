@@ -312,6 +312,240 @@
           }
         }
       ]
+    },
+    {
+      "id": "javascript-i3",
+      "languageID": "javascript",
+      "tier": "intermediate",
+      "order": 8,
+      "title": "Objects",
+      "summary": "Group related data with key: value pairs.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Objects hold labeled values",
+            "body": "An object uses { } with key: value pairs. Access a value using dot notation like player.name.",
+            "codeSample": "const player = {\n  name: \"Alex\",\n  score: 100,\n  alive: true\n};\nconsole.log(player.name);"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "How do you read the score in player = { name: \"Alex\", score: 100 }?",
+            "options": ["player[score]", "player.score", "player->score"],
+            "correctIndex": 1,
+            "explanation": "Dot notation: player.score."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Change the player's score to 200.",
+            "codeBefore": "player.",
+            "codeAfter": " = 200;",
+            "choices": ["score", "name", "alive"],
+            "correctIndex": 0,
+            "explanation": "You assign a new value to the score key."
+          }
+        }
+      ]
+    },
+    {
+      "id": "javascript-i4",
+      "languageID": "javascript",
+      "tier": "intermediate",
+      "order": 9,
+      "title": "map and filter",
+      "summary": "Transform and pick array items.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Array superpowers",
+            "body": "map makes a new array by transforming each item. filter makes a new array with only items that pass a test.",
+            "codeSample": "const nums = [1, 2, 3, 4];\nconst doubled = nums.map(n => n * 2);\nconst evens = nums.filter(n => n % 2 === 0);"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which method keeps only items that match a condition?",
+            "options": ["map", "filter", "push"],
+            "correctIndex": 1,
+            "explanation": "filter keeps items where the test returns true."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Double every number in nums.",
+            "codeBefore": "const doubled = nums.",
+            "codeAfter": "(n => n * 2);",
+            "choices": ["map", "filter", "forEach"],
+            "correctIndex": 0,
+            "explanation": "map transforms each item into a new one."
+          }
+        }
+      ]
+    },
+    {
+      "id": "javascript-i5",
+      "languageID": "javascript",
+      "tier": "intermediate",
+      "order": 10,
+      "title": "Arrow functions",
+      "summary": "A shorter way to write functions.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "The => syntax",
+            "body": "Arrow functions are compact. (params) => expression returns the expression automatically. For more than one line, use { } and a return statement.",
+            "codeSample": "const square = n => n * n;\nconst add = (a, b) => a + b;\nconsole.log(square(5));"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does const double = n => n * 2 return when called with 6?",
+            "options": ["6", "12", "26"],
+            "correctIndex": 1,
+            "explanation": "n * 2 with n = 6 is 12."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Complete the arrow.",
+            "codeBefore": "const greet = name ",
+            "codeAfter": " `Hi ${name}`;",
+            "choices": ["=>", "->", "=="],
+            "correctIndex": 0,
+            "explanation": "JavaScript arrow functions use =>."
+          }
+        }
+      ]
+    },
+    {
+      "id": "javascript-a1",
+      "languageID": "javascript",
+      "tier": "advanced",
+      "order": 11,
+      "title": "DOM basics",
+      "summary": "Change a webpage with JavaScript.",
+      "xpReward": 60,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Finding elements",
+            "body": "The DOM is the tree of elements on a page. document.querySelector finds the first element matching a CSS selector. You can read and change its textContent.",
+            "codeSample": "const title = document.querySelector(\"h1\");\ntitle.textContent = \"Hello from JS!\";"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which method finds the first matching element?",
+            "options": ["document.find", "document.querySelector", "document.getByTag"],
+            "correctIndex": 1,
+            "explanation": "querySelector takes any CSS selector."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Change the text inside the selected element.",
+            "codeBefore": "el.",
+            "codeAfter": " = \"Hi!\";",
+            "choices": ["textContent", "innerValue", "value"],
+            "correctIndex": 0,
+            "explanation": "textContent sets the text inside an element."
+          }
+        }
+      ]
+    },
+    {
+      "id": "javascript-a2",
+      "languageID": "javascript",
+      "tier": "advanced",
+      "order": 12,
+      "title": "Events",
+      "summary": "Respond to clicks and key presses.",
+      "xpReward": 65,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "addEventListener",
+            "body": "Elements fire events like 'click'. Use addEventListener to run a function when the event happens.",
+            "codeSample": "const btn = document.querySelector(\"button\");\nbtn.addEventListener(\"click\", () => {\n  console.log(\"Clicked!\");\n});"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which event fires when you press a mouse button on an element?",
+            "options": ["click", "hover", "load"],
+            "correctIndex": 0,
+            "explanation": "click fires on mouse press and release."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Attach a click handler.",
+            "codeBefore": "btn.",
+            "codeAfter": "(\"click\", handle);",
+            "choices": ["addEventListener", "on", "bind"],
+            "correctIndex": 0,
+            "explanation": "addEventListener is the standard way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "javascript-a3",
+      "languageID": "javascript",
+      "tier": "advanced",
+      "order": 13,
+      "title": "async and await",
+      "summary": "Wait for slow things without blocking.",
+      "xpReward": 70,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Promises made readable",
+            "body": "An async function can use await to pause until a Promise finishes. This lets you write code that waits for the network without freezing the page.",
+            "codeSample": "async function loadData() {\n  const res = await fetch(\"/api/data\");\n  const data = await res.json();\n  console.log(data);\n}"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Where can you use await?",
+            "options": ["Anywhere", "Only inside async functions", "Only in loops"],
+            "correctIndex": 1,
+            "explanation": "await only works inside functions marked async."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Mark this function so it can await.",
+            "codeBefore": "",
+            "codeAfter": " function load() { await fetch(\"/x\"); }",
+            "choices": ["async", "await", "promise"],
+            "correctIndex": 0,
+            "explanation": "async before function enables await inside."
+          }
+        }
+      ]
     }
   ]
 }

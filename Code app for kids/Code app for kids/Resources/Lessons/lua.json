@@ -234,6 +234,162 @@
           }
         }
       ]
+    },
+    {
+      "id": "lua-i1",
+      "languageID": "lua",
+      "tier": "intermediate",
+      "order": 6,
+      "title": "Tables as lists",
+      "summary": "Store many values in one variable.",
+      "xpReward": 40,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Tables — Lua's only data structure",
+            "body": "A table written like {1, 2, 3} acts like a list. Lua lists start at index 1 (not 0). Use #list to get the length.",
+            "codeSample": "local nums = {10, 20, 30}\nprint(nums[1]) -- 10\nprint(#nums)   -- 3"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What index is the first item in a Lua list?",
+            "options": ["0", "1", "-1"],
+            "correctIndex": 1,
+            "explanation": "Lua lists start at index 1."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Get the length of the nums table.",
+            "codeBefore": "local count = ",
+            "codeAfter": "nums",
+            "choices": ["#", "len(", "count("],
+            "correctIndex": 0,
+            "explanation": "#table returns its length."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lua-i2",
+      "languageID": "lua",
+      "tier": "intermediate",
+      "order": 7,
+      "title": "Tables as dictionaries",
+      "summary": "Use keys, not just numbers.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Key-value tables",
+            "body": "Tables can use string keys like a dictionary. Use dot notation (player.name) or bracket notation (player[\"name\"]) to read values.",
+            "codeSample": "local player = {\n  name = \"Alex\",\n  score = 100\n}\nprint(player.name)"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "How do you read the score in player = { score = 100 }?",
+            "options": ["player->score", "player.score", "player::score"],
+            "correctIndex": 1,
+            "explanation": "Dot notation: player.score."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Set the player's score to 200.",
+            "codeBefore": "player.",
+            "codeAfter": " = 200",
+            "choices": ["score", "name", "player"],
+            "correctIndex": 0,
+            "explanation": "Assign a value to the score key."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lua-i3",
+      "languageID": "lua",
+      "tier": "intermediate",
+      "order": 8,
+      "title": "Returning values",
+      "summary": "Send a result back from a function.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "The return keyword",
+            "body": "Use return to send a value back from a function. Lua can even return more than one value at a time.",
+            "codeSample": "local function add(a, b)\n  return a + b\nend\n\nlocal total = add(3, 4)\nprint(total) -- 7"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What does return do in a function?",
+            "options": ["Stops Roblox", "Sends a value back to the caller", "Prints to the output"],
+            "correctIndex": 1,
+            "explanation": "return hands a value back to whoever called the function."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Send the score back from the function.",
+            "codeBefore": "local function getScore()\n  ",
+            "codeAfter": " 100\nend",
+            "choices": ["return", "print", "end"],
+            "correctIndex": 0,
+            "explanation": "return 100 hands the value back."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lua-a1",
+      "languageID": "lua",
+      "tier": "advanced",
+      "order": 9,
+      "title": "Metatables",
+      "summary": "Give tables special powers.",
+      "xpReward": 70,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Metatables customize behavior",
+            "body": "A metatable holds hidden rules for another table. The __index field lets you share fields from a parent table — a simple way to build classes in Lua.",
+            "codeSample": "local Animal = { kind = \"unknown\" }\nlocal cat = setmetatable({}, { __index = Animal })\nprint(cat.kind) -- unknown"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which metatable field lets one table borrow from another?",
+            "options": ["__call", "__index", "__add"],
+            "correctIndex": 1,
+            "explanation": "__index defines the fallback lookup table."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Attach a metatable to t.",
+            "codeBefore": "",
+            "codeAfter": "(t, { __index = Animal })",
+            "choices": ["setmetatable", "getmetatable", "rawset"],
+            "correctIndex": 0,
+            "explanation": "setmetatable installs a metatable on a table."
+          }
+        }
+      ]
     }
   ]
 }

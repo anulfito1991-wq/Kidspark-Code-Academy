@@ -312,6 +312,201 @@
           }
         }
       ]
+    },
+    {
+      "id": "scratch-i3",
+      "languageID": "scratch",
+      "tier": "intermediate",
+      "order": 8,
+      "title": "Broadcasts",
+      "summary": "Let sprites talk to each other.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Messages between sprites",
+            "body": "A broadcast sends a message to every sprite. Other sprites use \"when I receive\" to react. Great for cutscenes and level changes.",
+            "codeSample": null
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which block reacts to a broadcast?",
+            "options": ["when flag clicked", "when I receive", "forever"],
+            "correctIndex": 1,
+            "explanation": "\"when I receive\" runs when that message is broadcast."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Send a message called start.",
+            "codeBefore": "",
+            "codeAfter": " start",
+            "choices": ["broadcast", "say", "when"],
+            "correctIndex": 0,
+            "explanation": "broadcast sends the message to everyone."
+          }
+        }
+      ]
+    },
+    {
+      "id": "scratch-i4",
+      "languageID": "scratch",
+      "tier": "intermediate",
+      "order": 9,
+      "title": "Clones",
+      "summary": "Make copies of a sprite on the fly.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "create clone of myself",
+            "body": "Cloning makes a live copy of a sprite that runs its own code. Use \"when I start as a clone\" to control what a clone does.",
+            "codeSample": null
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which block fires on each new clone?",
+            "options": ["when flag clicked", "when I start as a clone", "forever"],
+            "correctIndex": 1,
+            "explanation": "Every clone begins with this hat block."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Make a new clone of myself.",
+            "codeBefore": "create clone of ",
+            "codeAfter": "",
+            "choices": ["myself", "Stage", "main"],
+            "correctIndex": 0,
+            "explanation": "\"myself\" clones the sprite you're in."
+          }
+        }
+      ]
+    },
+    {
+      "id": "scratch-i5",
+      "languageID": "scratch",
+      "tier": "intermediate",
+      "order": 10,
+      "title": "Random numbers",
+      "summary": "Make things feel unpredictable.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "pick random",
+            "body": "The \"pick random 1 to 10\" block gives a different whole number each time. Plug it into move, say, or set blocks for surprise.",
+            "codeSample": null
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What could \"pick random 1 to 6\" return?",
+            "options": ["Only 6", "Any whole number from 1 to 6", "Always 3"],
+            "correctIndex": 1,
+            "explanation": "It's like rolling a 6-sided die."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Move a random number of steps from 10 to 50.",
+            "codeBefore": "move ",
+            "codeAfter": " steps",
+            "choices": ["pick random 10 to 50", "10", "50"],
+            "correctIndex": 0,
+            "explanation": "Plug the random block into the move slot."
+          }
+        }
+      ]
+    },
+    {
+      "id": "scratch-a1",
+      "languageID": "scratch",
+      "tier": "advanced",
+      "order": 11,
+      "title": "Custom blocks with inputs",
+      "summary": "Pass values into your own blocks.",
+      "xpReward": 60,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Add an input",
+            "body": "When making a custom block, click \"Add an input\" to give it a parameter — like distance or color. Inside the block definition, drag the input bubble where you need it.",
+            "codeSample": null
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Why add an input to a custom block?",
+            "options": ["To make the block bigger", "So the block can use different values each time", "To change colors only"],
+            "correctIndex": 1,
+            "explanation": "Inputs make your block flexible and reusable."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Call a block named jump with a height of 80.",
+            "codeBefore": "jump ",
+            "codeAfter": "",
+            "choices": ["80", "\"jump\"", "forever"],
+            "correctIndex": 0,
+            "explanation": "Pass 80 into the input slot."
+          }
+        }
+      ]
+    },
+    {
+      "id": "scratch-a2",
+      "languageID": "scratch",
+      "tier": "advanced",
+      "order": 12,
+      "title": "Simple game loop",
+      "summary": "Move, check, react — forever.",
+      "xpReward": 65,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Game loops in Scratch",
+            "body": "A basic game loop is: when flag clicked, then forever, move the player, check if touching an enemy, change score. This pattern powers most Scratch games.",
+            "codeSample": null
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which block runs the loop continuously?",
+            "options": ["repeat 10", "forever", "wait 1 second"],
+            "correctIndex": 1,
+            "explanation": "forever runs the game loop until you stop it."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Inside forever, check if you hit the enemy sprite.",
+            "codeBefore": "if <touching ",
+            "codeAfter": "?> then change score by 1",
+            "choices": ["Enemy", "Stage", "mouse-pointer"],
+            "correctIndex": 0,
+            "explanation": "Pick the sprite you want to detect."
+          }
+        }
+      ]
     }
   ]
 }

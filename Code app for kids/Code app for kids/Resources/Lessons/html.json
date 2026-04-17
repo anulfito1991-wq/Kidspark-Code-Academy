@@ -234,6 +234,279 @@
           }
         }
       ]
+    },
+    {
+      "id": "html-i1",
+      "languageID": "html",
+      "tier": "intermediate",
+      "order": 6,
+      "title": "Divs & structure",
+      "summary": "Group content into sections.",
+      "xpReward": 40,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "The humble <div>",
+            "body": "<div> is a generic box. Use it to group related content so you can style or position it together.",
+            "codeSample": "<div>\n  <h2>Card</h2>\n  <p>Some content.</p>\n</div>"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What is <div> used for?",
+            "options": ["Showing an image", "Grouping content", "Creating a link"],
+            "correctIndex": 1,
+            "explanation": "<div> groups related elements together."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Close the div block.",
+            "codeBefore": "<div><p>Hi</p>",
+            "codeAfter": "",
+            "choices": ["</div>", "<div/>", "<end>"],
+            "correctIndex": 0,
+            "explanation": "Close with </div>."
+          }
+        }
+      ]
+    },
+    {
+      "id": "html-i2",
+      "languageID": "html",
+      "tier": "intermediate",
+      "order": 7,
+      "title": "Forms & inputs",
+      "summary": "Collect text from visitors.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "<form> and <input>",
+            "body": "A <form> holds inputs. <input> boxes collect information. The type attribute controls what kind — text, number, email, password.",
+            "codeSample": "<form>\n  <label>Name: <input type=\"text\"></label>\n  <button>Submit</button>\n</form>"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which attribute chooses the input kind?",
+            "options": ["kind", "type", "input"],
+            "correctIndex": 1,
+            "explanation": "type=\"text\", type=\"email\", type=\"password\", etc."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Make a number input.",
+            "codeBefore": "<input type=\"",
+            "codeAfter": "\">",
+            "choices": ["number", "num", "int"],
+            "correctIndex": 0,
+            "explanation": "type=\"number\" shows a number input."
+          }
+        }
+      ]
+    },
+    {
+      "id": "html-i3",
+      "languageID": "html",
+      "tier": "intermediate",
+      "order": 8,
+      "title": "Tables",
+      "summary": "Lay out data in rows and columns.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "<table>, <tr>, <td>",
+            "body": "A <table> holds rows (<tr>). Each row holds cells (<td> for data, <th> for header cells).",
+            "codeSample": "<table>\n  <tr><th>Name</th><th>Score</th></tr>\n  <tr><td>Alex</td><td>100</td></tr>\n</table>"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which tag marks one row in a table?",
+            "options": ["<td>", "<tr>", "<row>"],
+            "correctIndex": 1,
+            "explanation": "<tr> = table row."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Create a header cell.",
+            "codeBefore": "<",
+            "codeAfter": ">Name</th>",
+            "choices": ["th", "td", "head"],
+            "correctIndex": 0,
+            "explanation": "<th> makes a bold header cell."
+          }
+        }
+      ]
+    },
+    {
+      "id": "html-i4",
+      "languageID": "html",
+      "tier": "intermediate",
+      "order": 9,
+      "title": "CSS classes",
+      "summary": "Style groups of elements.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "class and .selector",
+            "body": "Add class=\"card\" to an element, then in CSS write .card { ... } to style every element with that class.",
+            "codeSample": "<style>\n  .card { background: #eee; padding: 8px; }\n</style>\n<div class=\"card\">Hi</div>"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "How do you select a class in CSS?",
+            "options": ["#name", ".name", "@name"],
+            "correctIndex": 1,
+            "explanation": "Class selectors start with a period."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Add the card class to a div.",
+            "codeBefore": "<div ",
+            "codeAfter": "=\"card\"></div>",
+            "choices": ["class", "id", "style"],
+            "correctIndex": 0,
+            "explanation": "class=\"card\" tags it for CSS."
+          }
+        }
+      ]
+    },
+    {
+      "id": "html-i5",
+      "languageID": "html",
+      "tier": "intermediate",
+      "order": 10,
+      "title": "Semantic tags",
+      "summary": "Describe meaning, not just looks.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "<header>, <main>, <footer>",
+            "body": "Semantic tags describe the role of a section. Search engines and screen readers use them to understand your page better than plain <div>s.",
+            "codeSample": "<header>Site title</header>\n<main>Articles</main>\n<footer>(c) 2026</footer>"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which tag marks the main content area?",
+            "options": ["<section>", "<main>", "<div>"],
+            "correctIndex": 1,
+            "explanation": "<main> wraps the primary content."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Pick the semantic tag for a page footer.",
+            "codeBefore": "<",
+            "codeAfter": ">(c) 2026</",
+            "choices": ["footer", "bottom", "end"],
+            "correctIndex": 0,
+            "explanation": "<footer> describes the page footer."
+          }
+        }
+      ]
+    },
+    {
+      "id": "html-a1",
+      "languageID": "html",
+      "tier": "advanced",
+      "order": 11,
+      "title": "Flexbox layout",
+      "summary": "Arrange items in a row with one line of CSS.",
+      "xpReward": 60,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "display: flex",
+            "body": "Flexbox lays out children in a row or column with spacing controls. Set display: flex on the parent — children line up automatically.",
+            "codeSample": ".row {\n  display: flex;\n  gap: 12px;\n  justify-content: space-between;\n}"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which property turns on flexbox?",
+            "options": ["layout: flex", "display: flex", "flex: on"],
+            "correctIndex": 1,
+            "explanation": "display: flex enables flex layout on a container."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Make children line up horizontally.",
+            "codeBefore": ".row { display: ",
+            "codeAfter": "; }",
+            "choices": ["flex", "block", "grid"],
+            "correctIndex": 0,
+            "explanation": "flex lays children out in a row by default."
+          }
+        }
+      ]
+    },
+    {
+      "id": "html-a2",
+      "languageID": "html",
+      "tier": "advanced",
+      "order": 12,
+      "title": "Embedding JavaScript",
+      "summary": "Make your page interactive.",
+      "xpReward": 65,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "The <script> tag",
+            "body": "Put JavaScript inside <script> tags — usually just before </body>. The script can find elements and react to clicks.",
+            "codeSample": "<button id=\"go\">Go</button>\n<script>\n  document.getElementById(\"go\").addEventListener(\"click\", () => {\n    alert(\"Hi!\");\n  });\n</script>"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which tag holds JavaScript inside an HTML page?",
+            "options": ["<js>", "<script>", "<code>"],
+            "correctIndex": 1,
+            "explanation": "<script> is the tag for JavaScript code."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Open a script block.",
+            "codeBefore": "",
+            "codeAfter": ">\n  console.log(\"hi\");\n</script>",
+            "choices": ["<script", "<js", "<code"],
+            "correctIndex": 0,
+            "explanation": "<script> ... </script> wraps JavaScript code."
+          }
+        }
+      ]
     }
   ]
 }

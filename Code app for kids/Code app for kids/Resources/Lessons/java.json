@@ -210,7 +210,7 @@
           "payload": {
             "title": "Methods are Java's functions",
             "body": "A method is a named block of code you can call anytime. void means it doesn't return a value. static lets you call it from main without creating an object.",
-            "codeSample": "static void celebrate() {\n  System.out.println(\"You did it! 🎉\");\n}\n\n// Call it:\ncelebrate();"
+            "codeSample": "static void celebrate() {\n  System.out.println(\"You did it!\");\n}\n\n// Call it:\ncelebrate();"
           }
         },
         {
@@ -231,6 +231,279 @@
             "choices": ["void", "int", "String"],
             "correctIndex": 0,
             "explanation": "void signals the method gives nothing back to the caller."
+          }
+        }
+      ]
+    },
+    {
+      "id": "java-i1",
+      "languageID": "java",
+      "tier": "intermediate",
+      "order": 6,
+      "title": "Arrays",
+      "summary": "Store many values in one variable.",
+      "xpReward": 40,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Fixed-size lists",
+            "body": "A Java array holds a fixed number of values of the same type. Declare with type[] and access with [index].",
+            "codeSample": "int[] scores = {90, 85, 72};\nSystem.out.println(scores[0]); // 90\nSystem.out.println(scores.length); // 3"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "How do you get the number of items in a Java array?",
+            "options": ["array.size()", "array.length", "array.count"],
+            "correctIndex": 1,
+            "explanation": "Arrays expose length as a field (no parentheses)."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Read the first element of scores.",
+            "codeBefore": "int first = scores",
+            "codeAfter": ";",
+            "choices": ["[0]", "(0)", ".first"],
+            "correctIndex": 0,
+            "explanation": "Square brackets with index 0."
+          }
+        }
+      ]
+    },
+    {
+      "id": "java-i2",
+      "languageID": "java",
+      "tier": "intermediate",
+      "order": 7,
+      "title": "Reading input",
+      "summary": "Use Scanner to read from the keyboard.",
+      "xpReward": 40,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Scanner",
+            "body": "Scanner reads input from the user. nextLine() reads a line of text, nextInt() reads a whole number.",
+            "codeSample": "import java.util.Scanner;\nScanner in = new Scanner(System.in);\nSystem.out.print(\"Name: \");\nString name = in.nextLine();\nSystem.out.println(\"Hi, \" + name);"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which method reads a line of text?",
+            "options": ["nextInt()", "nextLine()", "readLine()"],
+            "correctIndex": 1,
+            "explanation": "nextLine() returns the rest of the current input line as a String."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Read a whole number from the scanner.",
+            "codeBefore": "int age = in.",
+            "codeAfter": "();",
+            "choices": ["nextInt", "nextLine", "read"],
+            "correctIndex": 0,
+            "explanation": "nextInt reads the next whole number."
+          }
+        }
+      ]
+    },
+    {
+      "id": "java-i3",
+      "languageID": "java",
+      "tier": "intermediate",
+      "order": 8,
+      "title": "While loops",
+      "summary": "Loop while a condition holds.",
+      "xpReward": 45,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "while (condition)",
+            "body": "A while loop keeps running its block as long as the condition is true. Great when you don't know how many times you'll loop.",
+            "codeSample": "int n = 5;\nwhile (n > 0) {\n  System.out.println(n);\n  n--;\n}"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What happens if the condition is false on the very first check?",
+            "options": ["The block runs once", "The block runs zero times", "The program crashes"],
+            "correctIndex": 1,
+            "explanation": "while checks first, so the block may never execute."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Loop until n is no longer greater than 0.",
+            "codeBefore": "while (n ",
+            "codeAfter": " 0) { n--; }",
+            "choices": [">", "<", "=="],
+            "correctIndex": 0,
+            "explanation": "> 0 keeps looping while n is still positive."
+          }
+        }
+      ]
+    },
+    {
+      "id": "java-i4",
+      "languageID": "java",
+      "tier": "intermediate",
+      "order": 9,
+      "title": "Classes & Objects",
+      "summary": "Design your own type.",
+      "xpReward": 50,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "A blueprint and an instance",
+            "body": "A class is a blueprint. An object is a real thing built from that blueprint, made with the new keyword.",
+            "codeSample": "class Dog {\n  String name;\n  void bark() { System.out.println(name + \" says woof\"); }\n}\nDog d = new Dog();\nd.name = \"Rex\";\nd.bark();"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which keyword builds a new object?",
+            "options": ["class", "new", "make"],
+            "correctIndex": 1,
+            "explanation": "new creates an instance of a class."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Create a new Dog.",
+            "codeBefore": "Dog d = ",
+            "codeAfter": " Dog();",
+            "choices": ["new", "make", "build"],
+            "correctIndex": 0,
+            "explanation": "new ClassName() calls the constructor."
+          }
+        }
+      ]
+    },
+    {
+      "id": "java-i5",
+      "languageID": "java",
+      "tier": "intermediate",
+      "order": 10,
+      "title": "Constructors",
+      "summary": "Set up objects when they're built.",
+      "xpReward": 50,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Constructors run on new",
+            "body": "A constructor has the same name as its class and no return type. Use it to set fields when you create an object.",
+            "codeSample": "class Dog {\n  String name;\n  Dog(String n) { name = n; }\n}\nDog d = new Dog(\"Rex\");"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "What name does a constructor use?",
+            "options": ["init", "the class's name", "main"],
+            "correctIndex": 1,
+            "explanation": "Constructor names always match the class name."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Start a constructor for class Dog that takes a name.",
+            "codeBefore": "",
+            "codeAfter": "(String n) { name = n; }",
+            "choices": ["Dog", "new", "void"],
+            "correctIndex": 0,
+            "explanation": "A constructor uses the class name and no return type."
+          }
+        }
+      ]
+    },
+    {
+      "id": "java-a1",
+      "languageID": "java",
+      "tier": "advanced",
+      "order": 11,
+      "title": "Inheritance",
+      "summary": "Build new classes from old ones.",
+      "xpReward": 60,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "extends",
+            "body": "A subclass uses extends to inherit fields and methods from a parent class. It can then add or override behavior.",
+            "codeSample": "class Animal { void speak() { System.out.println(\"...\"); } }\nclass Cat extends Animal {\n  @Override\n  void speak() { System.out.println(\"meow\"); }\n}"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which keyword makes class B inherit from A?",
+            "options": ["implements", "inherits", "extends"],
+            "correctIndex": 2,
+            "explanation": "class B extends A."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Make Cat inherit from Animal.",
+            "codeBefore": "class Cat ",
+            "codeAfter": " Animal {}",
+            "choices": ["extends", "implements", "is"],
+            "correctIndex": 0,
+            "explanation": "extends chains the parent class."
+          }
+        }
+      ]
+    },
+    {
+      "id": "java-a2",
+      "languageID": "java",
+      "tier": "advanced",
+      "order": 12,
+      "title": "ArrayList",
+      "summary": "A growable list that's easier than arrays.",
+      "xpReward": 65,
+      "steps": [
+        {
+          "kind": "explainer",
+          "payload": {
+            "title": "Import and use",
+            "body": "ArrayList lives in java.util. Unlike arrays, you can add and remove items. Use generics like <String> to say what it holds.",
+            "codeSample": "import java.util.ArrayList;\nArrayList<String> names = new ArrayList<>();\nnames.add(\"Alex\");\nSystem.out.println(names.get(0));"
+          }
+        },
+        {
+          "kind": "mcq",
+          "payload": {
+            "prompt": "Which method adds an item to an ArrayList?",
+            "options": ["push", "append", "add"],
+            "correctIndex": 2,
+            "explanation": "ArrayList.add(x) appends x."
+          }
+        },
+        {
+          "kind": "codeFill",
+          "payload": {
+            "prompt": "Get the first name from the list.",
+            "codeBefore": "String first = names.",
+            "codeAfter": "(0);",
+            "choices": ["get", "at", "index"],
+            "correctIndex": 0,
+            "explanation": "get(i) returns the item at index i."
           }
         }
       ]
