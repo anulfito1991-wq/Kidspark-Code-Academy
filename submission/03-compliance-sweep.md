@@ -33,23 +33,17 @@ Green = shipped. Amber = decision needed before submission. Red = blocker.
 
 ## AMBER — decisions the owner must make before submission
 
-### A1. SUPPORTED_PLATFORMS includes macosx, xros, xrsimulator
-The current build settings have:
+### A1. Supported platforms — RESOLVED ✅
+Build settings are now scoped to **iPhone + iPad** only:
 ```
-SUPPORTED_PLATFORMS = iphoneos iphonesimulator macosx xros xrsimulator
+SUPPORTED_PLATFORMS = iphoneos iphonesimulator
+TARGETED_DEVICE_FAMILY = "1,2"   # iPhone + iPad
 ```
-This means the project *compiles* for Mac Catalyst and visionOS too.
+Mac Catalyst and visionOS removed. Build verified clean under this scope.
 
-**Decision needed:** ship iPhone-only for v1, or include Mac/Vision?
-
-- **Recommended:** iPhone-only for v1. Faster review, fewer per-platform QA
-  surfaces, fewer screenshots. Reduce `SUPPORTED_PLATFORMS` to
-  `iphoneos iphonesimulator` in both Debug + Release.
-- If you keep the other platforms, you must also supply Mac Catalyst
-  screenshots (1280×800 minimum) and visionOS screenshots, plus separately
-  test purchases and the parental gate on each.
-
-**Action:** I can make the settings edit in 30 seconds if you say "iPhone only".
+iPad support adds one required screenshot size (13" iPad Pro) — see
+`02-screenshots-plan.md`. QA should also include a quick pass on an iPad
+simulator to catch any layout issues that wouldn't surface on iPhone.
 
 ### A2. Kids Category vs Education category
 See `04-category-decision.md`. Recommendation: **Education**. Decide and

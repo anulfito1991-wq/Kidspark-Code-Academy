@@ -24,7 +24,7 @@ waiting on Apple enrollment + Paid Apps Agreement propagation.
   - [ ] **Banking** — add payout bank account
   - [ ] **Tax** — complete W-9 (US) or W-8BEN (non-US)
 - [ ] Create the app:
-  - Platforms: **iOS** (only — unless you asked me to keep Mac/Vision; see `03-compliance-sweep.md` A1)
+  - Platforms: **iOS** (covers both iPhone and iPad — single checkbox)
   - Name: **KidSpark Academy: Kids Code**
   - Primary Language: English (U.S.)
   - Bundle ID: **com.kidspark.academy** (pick from dropdown; register as an App ID first if missing)
@@ -65,11 +65,12 @@ In ASC → Monetization → Subscriptions:
 
 ## Phase 5 — Screenshots (~45 min)
 
-- [ ] Run: `./submission/capture-screenshots.sh`
+- [ ] Run: `./submission/capture-screenshots.sh` (6.9" iPhone)
 - [ ] Tap through the 5 target screens in order (see `02-screenshots-plan.md`)
-- [ ] Repeat with `DEVICE="iPhone 11 Pro Max"`
+- [ ] Repeat with `DEVICE="iPhone 11 Pro Max"` (6.5" iPhone)
+- [ ] Repeat with `DEVICE="iPad Pro 13-inch (M4)"` (13" iPad — required because we target iPad)
 - [ ] *(Optional but recommended)* Drop them into your Figma + add overlays
-- [ ] Upload to ASC → App Store tab → Previews and Screenshots
+- [ ] Upload to ASC → App Store tab → Previews and Screenshots (one batch per size)
 
 ## Phase 6 — App Icon final polish (optional but nice)
 
@@ -88,13 +89,15 @@ In ASC → Monetization → Subscriptions:
 ## Phase 7 — Device test (~30 min)
 
 - [ ] Install a Debug build on a **real iPhone** via Xcode
-- [ ] Sanity check:
+- [ ] *(If you own one)* also install on a real **iPad** — build now targets iPad too
+- [ ] Sanity check on each device:
   - [ ] Icon renders correctly on home screen
   - [ ] Age gate flows properly
   - [ ] Complete a lesson, earn XP, see streak update
   - [ ] Set a Parent PIN, access dashboard
   - [ ] Tap Pro tab — confirm the press-and-hold gate works on real touch
   - [ ] Enable reminders from dashboard — real notification permission dialog appears
+  - [ ] On iPad: check layout in both portrait + landscape; Split View if you use it
 
 ## Phase 8 — TestFlight (~45 min + 24 h Apple processing)
 

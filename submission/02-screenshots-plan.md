@@ -1,18 +1,20 @@
 # KidSpark Academy — Screenshots Plan
 
-Apple requires screenshots for every device size you support. For iPhone-only
+Apple requires screenshots for every device size you support. For iPhone + iPad
 apps in 2026 you must supply **at least one** of the two required sizes; the
 6.9" set cascades down to smaller devices automatically.
 
-## Required sizes (iOS)
+## Required sizes (iOS + iPadOS)
 
 | Size label | Device (Simulator) | Resolution (px) | Count |
 |---|---|---|---|
-| **6.9" (required)** | iPhone 17 Pro Max | 1320 × 2868 | 3–10 |
-| **6.5" (required)** | iPhone 11 Pro Max | 1242 × 2688 | 3–10 |
+| **6.9" iPhone (required)** | iPhone 17 Pro Max | 1320 × 2868 | 3–10 |
+| **6.5" iPhone (required)** | iPhone 11 Pro Max | 1242 × 2688 | 3–10 |
+| **13" iPad (required)** | iPad Pro 13" (M4) | 2064 × 2752 | 3–10 |
 
-iPad screenshots are **not required** — this is an iPhone app (verify the
-target's "Supported Destinations" matches).
+The build targets **iPhone + iPad** (TARGETED_DEVICE_FAMILY = 1,2), so
+Apple requires at least one iPad screenshot size. The 13" size cascades
+down to smaller iPads automatically.
 
 ## The five screens we ship in v1
 
@@ -40,8 +42,12 @@ Debug build, screenshots the current screen, and saves to
 ./submission/capture-screenshots.sh
 ```
 
-Rerun for the 6.5" size by editing the `DEVICE` variable at the top of the
-script (or pass `DEVICE="iPhone 11 Pro Max"` inline). The script handles the
+Rerun for each additional size by passing `DEVICE` inline:
+
+```bash
+DEVICE="iPhone 11 Pro Max" ./submission/capture-screenshots.sh   # 6.5"
+DEVICE="iPad Pro 13-inch (M4)" ./submission/capture-screenshots.sh  # 13" iPad
+``` The script handles the
 simctl dance but you'll still have to tap through the app to reach each
 target screen before it snaps — that's intentional, App Review wants real
 app state, not mocked UI.

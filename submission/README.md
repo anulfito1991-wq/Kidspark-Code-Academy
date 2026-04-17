@@ -29,8 +29,8 @@ Everything you need to ship v1.0 to the App Store.
 | TestFlight sandbox purchase | ⏳ Owner |
 | Submit for review | ⏳ Owner |
 
-## One decision that blocks progress
+## Status: unblocked ✅
 
-See `03-compliance-sweep.md` section **A1**: `SUPPORTED_PLATFORMS` currently
-includes macOS + visionOS. Recommend restricting to iOS-only for v1. Tell me
-"iPhone only" and I'll make the edit.
+Build is scoped to **iPhone + iPad** (iOS/iPadOS only). No outstanding
+decisions from me. Next action is yours — start Phase 1 of
+`05-owner-checklist.md` (Apple Developer enrollment).
