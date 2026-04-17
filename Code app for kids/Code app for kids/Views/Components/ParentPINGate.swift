@@ -97,7 +97,7 @@ struct ParentPINGate<Content: View>: View {
                     // unmistakable that this is a one-time setup flow — not an
                     // "enter your existing PIN" screen.
                     if isSettingPIN && lockoutRemaining == 0 {
-                        Text(confirmPIN.isEmpty ? "Step 1 of 2 — Choose a PIN" : "Step 2 of 2 — Confirm your PIN")
+                        Text(enteredPIN.count < 4 ? "Step 1 of 2 — Choose a PIN" : "Step 2 of 2 — Confirm your PIN")
                             .font(.system(size: 12, weight: .bold))
                             .foregroundStyle(.white)
                             .padding(.horizontal, 12)
@@ -161,7 +161,7 @@ struct ParentPINGate<Content: View>: View {
             return "Too many wrong attempts. Try again in \(secs)s."
         }
         if isSettingPIN {
-            return confirmPIN.isEmpty
+            return enteredPIN.count < 4
                 ? "Pick any 4 digits. You'll use this to unlock the Parent Dashboard later."
                 : "Enter the same 4 digits again to confirm."
         }
@@ -180,33 +180,38 @@ struct ParentPINGate<Content: View>: View {
     }
 
     private var currentEntry: String {
-        isSettingPIN && !confirmPIN.isEmpty ? confirmPIN : enteredPIN
+        // During PIN setup, the 4 dots show the confirm entry once step 1
+        // is complete (enteredPIN has all 4 digits). Otherwise they show
+        // whatever the user is actively typing.
+        isSettingPIN && enteredPIN.count == 4 ? confirmPIN : enteredPIN
     }
 
     private func handleInput(_ digit: String) {
         guard lockoutRemaining == 0 else { return }
         errorMessage = ""
         if isSettingPIN {
-            if confirmPIN.isEmpty {
-                if enteredPIN.count < 4 {
-                    enteredPIN.append(digit)
-                    if enteredPIN.count == 4 { confirmPIN = "" }
-                }
-            } else {
-                if confirmPIN.count < 4 {
-                    confirmPIN.append(digit)
-                    if confirmPIN.count == 4 {
-                        if confirmPIN == enteredPIN {
-                            ParentPINStore.setPIN(enteredPIN)
-                            isUnlocked = true
-                            unlockedAt = .now
-                            isSettingPIN = false
-                        } else {
-                            errorMessage = "PINs don't match. Try again."
-                            withAnimation(.default) { shakeTrigger.toggle() }
-                            enteredPIN = ""
-                            confirmPIN = ""
-                        }
+            // Step 1 — capture the new PIN.
+            if enteredPIN.count < 4 {
+                enteredPIN.append(digit)
+                return
+            }
+            // Step 2 — capture the confirmation. Reaching here means
+            // enteredPIN already has all 4 digits, so new taps go to confirmPIN.
+            if confirmPIN.count < 4 {
+                confirmPIN.append(digit)
+                if confirmPIN.count == 4 {
+                    if confirmPIN == enteredPIN {
+                        ParentPINStore.setPIN(enteredPIN)
+                        isUnlocked = true
+                        unlockedAt = .now
+                        isSettingPIN = false
+                        enteredPIN = ""
+                        confirmPIN = ""
+                    } else {
+                        errorMessage = "PINs don't match. Try again."
+                        withAnimation(.default) { shakeTrigger.toggle() }
+                        enteredPIN = ""
+                        confirmPIN = ""
                     }
                 }
             }
