@@ -86,12 +86,26 @@ struct ParentPINGate<Content: View>: View {
                         Circle()
                             .fill(KidSpark.Colors.spark.opacity(0.12))
                             .frame(width: 80, height: 80)
-                        Image(systemName: lockoutRemaining > 0 ? "lock.fill" : "person.2.fill")
+                        Image(systemName: heroIcon)
                             .font(.system(size: 34))
                             .foregroundStyle(KidSpark.Colors.spark)
                     }
-                    Text("Parent Dashboard")
+                    Text(titleText)
                         .font(.system(size: 26, weight: .black))
+
+                    // When setting a new PIN, show a prominent step pill so it's
+                    // unmistakable that this is a one-time setup flow — not an
+                    // "enter your existing PIN" screen.
+                    if isSettingPIN && lockoutRemaining == 0 {
+                        Text(confirmPIN.isEmpty ? "Step 1 of 2 — Choose a PIN" : "Step 2 of 2 — Confirm your PIN")
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundStyle(.white)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .background(KidSpark.Colors.spark, in: Capsule())
+                            .padding(.top, 2)
+                    }
+
                     Text(headerText)
                         .font(.system(size: 14, weight: .medium))
                         .foregroundStyle(.secondary)
@@ -148,10 +162,21 @@ struct ParentPINGate<Content: View>: View {
         }
         if isSettingPIN {
             return confirmPIN.isEmpty
-                ? "Create a 4-digit PIN to protect this area."
-                : "Re-enter your PIN to confirm."
+                ? "Pick any 4 digits. You'll use this to unlock the Parent Dashboard later."
+                : "Enter the same 4 digits again to confirm."
         }
         return "Enter your 4-digit PIN."
+    }
+
+    private var titleText: String {
+        if isSettingPIN { return "Create Parent PIN" }
+        return "Parent Dashboard"
+    }
+
+    private var heroIcon: String {
+        if lockoutRemaining > 0 { return "lock.fill" }
+        if isSettingPIN { return "lock.shield.fill" }
+        return "person.2.fill"
     }
 
     private var currentEntry: String {
