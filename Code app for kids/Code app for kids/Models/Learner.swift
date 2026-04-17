@@ -16,6 +16,9 @@ final class Learner {
     var ageGateCompleted: Bool
     var isUnder13: Bool
     var parentConsentDate: Date?
+    // Last date we granted monthly Pro streak freezes (2 per calendar month).
+    // Optional for backward compatibility with existing SwiftData stores.
+    var lastFreezeGrantDate: Date?
 
     init(
         displayName: String = "Coder",
@@ -30,7 +33,8 @@ final class Learner {
         createdAt: Date = .now,
         ageGateCompleted: Bool = false,
         isUnder13: Bool = false,
-        parentConsentDate: Date? = nil
+        parentConsentDate: Date? = nil,
+        lastFreezeGrantDate: Date? = nil
     ) {
         self.displayName = displayName
         self.xp = xp
@@ -45,5 +49,6 @@ final class Learner {
         self.ageGateCompleted = ageGateCompleted
         self.isUnder13 = isUnder13
         self.parentConsentDate = parentConsentDate
+        self.lastFreezeGrantDate = lastFreezeGrantDate
     }
 }

@@ -23,6 +23,7 @@ struct PaywallView: View {
                         hero
                         if hasCompletedFreeTaste { lossAversionBanner }
                         featureList
+                        comparisonTable
                         productButtons
                             .allowsHitTesting(gatePassed)
                             .opacity(gatePassed ? 1 : 0.35)
@@ -32,6 +33,7 @@ struct PaywallView: View {
                         if !gatePassed {
                             ParentalGate(gatePassed: $gatePassed)
                         }
+                        trustBlock
                         disclosureBlock
                         legalLinks
                     }
@@ -119,9 +121,9 @@ struct PaywallView: View {
                     .font(KidSpark.Fonts.title2)
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
-                Text("Open up Intermediate and Advanced lessons\nacross every language — forever.")
+                Text("Every lesson. Every language. Every challenge.\nDouble XP, streak freezes, and first access\nto everything new we build.")
                     .font(KidSpark.Fonts.callout)
-                    .foregroundStyle(.white.opacity(0.85))
+                    .foregroundStyle(.white.opacity(0.9))
                     .multilineTextAlignment(.center)
             }
             .padding(24)
@@ -131,22 +133,150 @@ struct PaywallView: View {
     // MARK: Features
 
     private var featureList: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            featureRow(emoji: "🚀", text: "All Intermediate & Advanced lessons")
-            featureRow(emoji: "❄️", text: "Streak freezes so you never lose your streak")
-            featureRow(emoji: "⚡", text: "Bonus XP on every lesson you complete")
-            featureRow(emoji: "✨", text: "Priority access to new languages as they launch")
+        VStack(alignment: .leading, spacing: 16) {
+            Text("What Pro unlocks")
+                .font(KidSpark.Fonts.headline)
+                .padding(.bottom, 2)
+
+            featureRow(
+                emoji: "🚀",
+                title: "All Intermediate lessons",
+                detail: "Unlock deeper lessons across Swift, Python, JavaScript, and Scratch — plus every new Intermediate and Advanced lesson we add."
+            )
+            featureRow(
+                emoji: "🌍",
+                title: "Every language, fully open",
+                detail: "Swift, Python, JavaScript, Java, Lua, HTML, and Scratch — explore one deeply or sample them all. No locked paths."
+            )
+            featureRow(
+                emoji: "⚡",
+                title: "Double XP on every lesson",
+                detail: "Pro learners earn 2× XP on every completed lesson. Level up faster, unlock milestones sooner, and fill out the badge shelf."
+            )
+            featureRow(
+                emoji: "❄️",
+                title: "Streak freezes — 2 every month",
+                detail: "Automatically receive 2 streak freezes at the start of every calendar month (up to 4 in reserve). One busy day won't break your streak."
+            )
+            featureRow(
+                emoji: "✨",
+                title: "First in line for new content",
+                detail: "New lessons, new languages, and new features roll out to Pro learners first. Your learner is always at the front of the line."
+            )
         }
         .kidSparkCard()
     }
 
-    private func featureRow(emoji: String, text: String) -> some View {
-        HStack(spacing: 12) {
-            Text(emoji).font(.title2)
-            Text(text)
-                .font(KidSpark.Fonts.callout)
-            Spacer()
+    private func featureRow(emoji: String, title: String, detail: String) -> some View {
+        HStack(alignment: .top, spacing: 14) {
+            Text(emoji)
+                .font(.system(size: 28))
+                .frame(width: 36)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(KidSpark.Fonts.callout.weight(.bold))
+                Text(detail)
+                    .font(KidSpark.Fonts.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer(minLength: 0)
         }
+    }
+
+    // MARK: Comparison table
+
+    private var comparisonTable: some View {
+        VStack(spacing: 0) {
+            // Header row
+            HStack(spacing: 0) {
+                Text("")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("Free")
+                    .font(KidSpark.Fonts.caption.weight(.bold))
+                    .foregroundStyle(.secondary)
+                    .frame(width: 64)
+                Text("Pro")
+                    .font(KidSpark.Fonts.caption.weight(.bold))
+                    .foregroundStyle(KidSpark.Colors.spark)
+                    .frame(width: 64)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(Color(.systemGray6))
+
+            comparisonRow("Basics lessons (42 total)",        free: "✓",     pro: "✓")
+            comparisonRow("Intermediate lessons",              free: "1 taste", pro: "All")
+            comparisonRow("Advanced lessons",                  free: "—",     pro: "All")
+            comparisonRow("Weekly challenges",                 free: "✓",    pro: "✓")
+            comparisonRow("XP earning rate",                   free: "1×",   pro: "2×")
+            comparisonRow("Streak freezes",                    free: "—",    pro: "2/month")
+            comparisonRow("Parent Dashboard",                  free: "✓",    pro: "✓")
+            comparisonRow("Daily goals & reminders",           free: "✓",    pro: "✓")
+            comparisonRow("Ads",                               free: "Never", pro: "Never", isLast: true)
+        }
+        .background(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(Color(.systemBackground))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(Color(.systemGray5), lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    private func comparisonRow(_ label: String, free: String, pro: String, isLast: Bool = false) -> some View {
+        VStack(spacing: 0) {
+            HStack(spacing: 0) {
+                Text(label)
+                    .font(KidSpark.Fonts.caption)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text(free)
+                    .font(KidSpark.Fonts.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .frame(width: 64)
+                Text(pro)
+                    .font(KidSpark.Fonts.caption.weight(.bold))
+                    .foregroundStyle(KidSpark.Colors.spark)
+                    .frame(width: 64)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 11)
+            if !isLast {
+                Divider().padding(.leading, 16)
+            }
+        }
+    }
+
+    // MARK: Trust block
+
+    private var trustBlock: some View {
+        VStack(spacing: 8) {
+            HStack(spacing: 10) {
+                trustPill(icon: "xmark.circle.fill", text: "No ads")
+                trustPill(icon: "eye.slash.fill", text: "No tracking")
+                trustPill(icon: "arrow.uturn.backward.circle.fill", text: "Cancel anytime")
+            }
+            Text("Progress and badges stay yours forever — even if you cancel.")
+                .font(KidSpark.Fonts.caption)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+        }
+        .padding(.vertical, 4)
+    }
+
+    private func trustPill(icon: String, text: String) -> some View {
+        HStack(spacing: 6) {
+            Image(systemName: icon)
+                .font(.system(size: 11, weight: .bold))
+            Text(text)
+                .font(.system(size: 12, weight: .semibold))
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 6)
+        .foregroundStyle(KidSpark.Colors.spark)
+        .background(KidSpark.Colors.spark.opacity(0.1), in: Capsule())
     }
 
     // MARK: Products

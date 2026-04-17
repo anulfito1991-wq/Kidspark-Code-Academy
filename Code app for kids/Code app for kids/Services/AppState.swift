@@ -133,6 +133,7 @@ final class AppState {
         if !alreadyCompleted {
             awardXP(lesson.xpReward)
             updateStreak()
+            grantMonthlyFreezesIfPro()
             NotificationService.scheduleStreakReminder(streakDays: learner.streakDays)
         } else {
             lastAwardedXP = 0
@@ -143,10 +144,15 @@ final class AppState {
     }
 
     private func awardXP(_ amount: Int) {
+        // Pro users earn 2× XP on every lesson. This is the advertised
+        // benefit on the paywall — if you change the multiplier, update
+        // PaywallView copy to match.
+        let multiplier = hasPro ? 2 : 1
+        let finalAmount = amount * multiplier
         let oldXP = learner.xp
         let oldLevel = XPService.level(for: oldXP)
-        learner.xp += amount
-        lastAwardedXP = amount
+        learner.xp += finalAmount
+        lastAwardedXP = finalAmount
         let newLevel = XPService.level(for: learner.xp)
         if newLevel > oldLevel { showLevelUp = true }
 
@@ -155,6 +161,23 @@ final class AppState {
             currentMilestone = milestone
             learner.earnedBadgeIDs.append(XPMilestoneService.storageKey(for: milestone))
         }
+    }
+
+    /// Awards 2 streak freezes per calendar month to Pro users, capped at 4
+    /// in reserve. Grant happens the first time they complete a lesson in a
+    /// new calendar month. Free users never receive freezes (matching the
+    /// paywall's advertised benefit).
+    private func grantMonthlyFreezesIfPro() {
+        guard hasPro else { return }
+        let calendar = Calendar.current
+        let now = Date.now
+        let isNewMonth: Bool = {
+            guard let last = learner.lastFreezeGrantDate else { return true }
+            return !calendar.isDate(last, equalTo: now, toGranularity: .month)
+        }()
+        guard isNewMonth else { return }
+        learner.streakFreezes = min(4, learner.streakFreezes + 2)
+        learner.lastFreezeGrantDate = now
     }
 
     private func updateStreak() {
