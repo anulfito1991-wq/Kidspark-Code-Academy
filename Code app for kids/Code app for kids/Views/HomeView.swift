@@ -127,7 +127,7 @@ struct HomeView: View {
                     NavigationLink(value: lang) {
                         LanguageTile(language: lang, progress: progressFraction(for: lang.id))
                     }
-                    .buttonStyle(.plain)
+                    .buttonStyle(PressableTileStyle())
                 }
             }
             .padding(.horizontal, KidSpark.Layout.pagePadding)
@@ -145,11 +145,20 @@ struct HomeView: View {
 
 // MARK: - Language tile
 
+// Scale-on-press behavior lives in a ButtonStyle so we don't attach a
+// zero-duration long-press gesture on the tile itself — that gesture
+// swallows the NavigationLink's tap and breaks navigation.
+private struct PressableTileStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.97 : 1.0)
+            .animation(.spring(response: 0.3, dampingFraction: 0.6), value: configuration.isPressed)
+    }
+}
+
 private struct LanguageTile: View {
     let language: Language
     let progress: Double
-
-    @State private var pressed: Bool = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -197,8 +206,5 @@ private struct LanguageTile: View {
         }
         .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius, style: .continuous))
         .shadow(color: language.accent.opacity(0.2), radius: 10, y: 4)
-        .scaleEffect(pressed ? 0.97 : 1.0)
-        .animation(.spring(response: 0.3, dampingFraction: 0.6), value: pressed)
-        .onLongPressGesture(minimumDuration: 0, pressing: { p in pressed = p }, perform: {})
     }
 }
