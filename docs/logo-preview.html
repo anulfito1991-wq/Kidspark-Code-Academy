@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>KidSpark Academy — Logo Sample</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    margin:0; font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+    background: #0B0B14; color: #EEE; min-height:100vh;
+    display:flex; align-items:center; justify-content:center; padding:40px;
+  }
+  .wrap { max-width: 1100px; width:100%; }
+  h1 { font-weight:800; letter-spacing:-0.02em; margin:0 0 8px; }
+  p.sub { color:#9CA3AF; margin:0 0 32px; }
+  .grid {
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .tile {
+    background:#15151F; border:1px solid #22222E; border-radius:20px;
+    padding:20px; text-align:center;
+  }
+  .tile .box {
+    aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
+    border-radius:18px; overflow:hidden; background:#fff;
+  }
+  .tile.dark .box { background:#0B0B14; }
+  .tile img { width:100%; height:100%; object-fit:contain; }
+  .tile .size-512 img { width:512px; height:512px; }
+  .tile .size-180 img { width:180px; height:180px; }
+  .tile .size-120 img { width:120px; height:120px; }
+  .tile .size-80  img { width:80px; height:80px; }
+  .label { margin-top:12px; font-size:13px; color:#9CA3AF; }
+  .hero {
+    display:flex; align-items:center; gap:28px; margin-bottom:32px;
+    background: linear-gradient(135deg,#7C3AED,#4F46E5);
+    border-radius:28px; padding:28px;
+  }
+  .hero img { width:160px; height:160px; border-radius:36px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35); }
+  .hero h2 { font-size:40px; margin:0; font-weight:900; letter-spacing:-0.02em; }
+  .hero .tag { opacity:.85; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <img src="logo-sample.svg" alt="KidSpark Academy logo"/>
+      <div>
+        <h2>KidSpark Academy</h2>
+        <div class="tag">Code app — icon sample v1</div>
+      </div>
+    </div>
+
+    <h1>Icon at real sizes</h1>
+    <p class="sub">Drop this in as a first pass. Tweak, iterate, then export the final PNG slots.</p>
+
+    <div class="grid">
+      <div class="tile">
+        <div class="box"><img src="logo-sample.svg" alt=""/></div>
+        <div class="label">1024 · App Store</div>
+      </div>
+      <div class="tile">
+        <div class="box size-180"><img src="logo-sample.svg" alt=""/></div>
+        <div class="label">180 · iPhone @3x</div>
+      </div>
+      <div class="tile">
+        <div class="box size-120"><img src="logo-sample.svg" alt=""/></div>
+        <div class="label">120 · iPhone @2x</div>
+      </div>
+      <div class="tile">
+        <div class="box size-80"><img src="logo-sample.svg" alt=""/></div>
+        <div class="label">80 · Spotlight</div>
+      </div>
+      <div class="tile dark">
+        <div class="box"><img src="logo-sample.svg" alt=""/></div>
+        <div class="label">On dark</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
