@@ -2,7 +2,8 @@ import SwiftUI
 
 struct TreeBranchLayout: View {
     let lessons: [Lesson]
-    let statusProvider: (Lesson) -> NodeStatus
+    let statuses: [String: NodeStatus]
+    let highlightedLessonID: String?
     let accent: Color
     let onTap: (Lesson) -> Void
 
@@ -53,7 +54,8 @@ struct TreeBranchLayout: View {
                     } label: {
                         LessonNodeView(
                             lesson: lesson,
-                            status: statusProvider(lesson),
+                            status: status(for: lesson),
+                            isHighlighted: lesson.id == highlightedLessonID,
                             accent: accent
                         )
                     }
@@ -67,11 +69,21 @@ struct TreeBranchLayout: View {
     }
 
     private func connectorColor(from index: Int) -> Color {
-        let from = statusProvider(lessons[index])
-        let to = statusProvider(lessons[index + 1])
+        // Bounds guard: during concurrent refreshes `lessons` can shrink
+        // between the Canvas loop's capture and this lookup. Fall back to
+        // the neutral connector color rather than crashing.
+        guard index >= 0, index + 1 < lessons.count else {
+            return Color.secondary.opacity(0.25)
+        }
+        let from = status(for: lessons[index])
+        let to = status(for: lessons[index + 1])
         if from == .completed && (to == .completed || to == .available || to == .inProgress) {
             return accent.opacity(0.6)
         }
         return Color.secondary.opacity(0.25)
+    }
+
+    private func status(for lesson: Lesson) -> NodeStatus {
+        statuses[lesson.id] ?? .locked
     }
 }

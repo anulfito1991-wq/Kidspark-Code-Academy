@@ -13,6 +13,9 @@ final class Learner {
     var completedChallengeIDs: [String]   // stores "challenge_<weekID>"
     var dailyGoal: Int
     var createdAt: Date
+    var ageGateCompleted: Bool
+    var isUnder13: Bool
+    var parentConsentDate: Date?
 
     init(
         displayName: String = "Coder",
@@ -24,7 +27,10 @@ final class Learner {
         earnedBadgeIDs: [String] = [],
         completedChallengeIDs: [String] = [],
         dailyGoal: Int = 1,
-        createdAt: Date = .now
+        createdAt: Date = .now,
+        ageGateCompleted: Bool = false,
+        isUnder13: Bool = false,
+        parentConsentDate: Date? = nil
     ) {
         self.displayName = displayName
         self.xp = xp
@@ -36,5 +42,8 @@ final class Learner {
         self.completedChallengeIDs = completedChallengeIDs
         self.dailyGoal = dailyGoal
         self.createdAt = createdAt
+        self.ageGateCompleted = ageGateCompleted
+        self.isUnder13 = isUnder13
+        self.parentConsentDate = parentConsentDate
     }
 }

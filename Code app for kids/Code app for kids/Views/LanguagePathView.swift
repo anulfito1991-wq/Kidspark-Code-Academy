@@ -7,12 +7,42 @@ struct LanguagePathView: View {
     @State private var selectedLesson: Lesson?
     @State private var showPaywall: Bool = false
 
+    // Cached derived state. Recomputed on appear and when progress / Pro flips.
+    @State private var statusCache: [String: NodeStatus] = [:]
+    @State private var highlightedLessonID: String?
+
     private var lessons: [Lesson] {
         appState.catalog.lessons(for: language.id)
     }
 
     private var completed: Int {
-        lessons.filter { appState.progress(for: $0.id)?.status == .completed }.count
+        lessons.filter { statusCache[$0.id] == .completed }.count
+    }
+
+    private func recomputeStatuses() {
+        let freeID = UnlockService.freeIntermediateLessonID(
+            in: lessons,
+            hasPro: appState.hasPro
+        )
+        var statuses: [String: NodeStatus] = [:]
+        var previousLesson: Lesson?
+        for lesson in lessons {
+            let status = UnlockService.status(
+                for: lesson,
+                previousLessonInSamePath: previousLesson,
+                progressByID: appState.progressByID,
+                hasPro: appState.hasPro,
+                freeIntermediateLessonID: freeID
+            )
+            statuses[lesson.id] = status
+            previousLesson = lesson
+        }
+        statusCache = statuses
+        highlightedLessonID = UnlockService.firstAvailableLessonID(
+            lessons: lessons,
+            progressByID: appState.progressByID,
+            hasPro: appState.hasPro
+        )
     }
 
     var body: some View {
@@ -47,7 +77,8 @@ struct LanguagePathView: View {
                 // Tree
                 TreeBranchLayout(
                     lessons: lessons,
-                    statusProvider: { appState.status(for: $0, in: lessons) },
+                    statuses: statusCache,
+                    highlightedLessonID: highlightedLessonID,
                     accent: language.accent,
                     onTap: handleTap
                 )
@@ -58,6 +89,10 @@ struct LanguagePathView: View {
         .background(KidSpark.Colors.pageBackground.ignoresSafeArea())
         .navigationTitle(language.displayName)
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear { recomputeStatuses() }
+        .onChange(of: appState.progressByID.count) { _, _ in recomputeStatuses() }
+        .onChange(of: appState.hasPro) { _, _ in recomputeStatuses() }
+        .onChange(of: lessons.count) { _, _ in recomputeStatuses() }
         .sheet(item: $selectedLesson) { lesson in
             NavigationStack {
                 LessonView(lesson: lesson, language: language)
@@ -69,7 +104,7 @@ struct LanguagePathView: View {
     }
 
     private func handleTap(_ lesson: Lesson) {
-        let status = appState.status(for: lesson, in: lessons)
+        let status = statusCache[lesson.id] ?? .locked
         switch status {
         case .locked: break
         case .proLocked: showPaywall = true

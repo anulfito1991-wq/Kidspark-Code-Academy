@@ -3,8 +3,8 @@ import StoreKit
 import Observation
 
 enum ProProductID: String, CaseIterable {
-    case monthly = "com.codeforkids.pro.monthly"
-    case annual = "com.codeforkids.pro.annual"
+    case monthly = "com.kidspark.academy.pro.monthly"
+    case annual = "com.kidspark.academy.pro.annual"
 }
 
 @Observable

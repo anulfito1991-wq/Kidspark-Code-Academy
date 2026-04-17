@@ -80,4 +80,12 @@ enum NotificationService {
         let settings = await UNUserNotificationCenter.current().notificationSettings()
         return settings.authorizationStatus == .authorized
     }
+
+    /// Raw authorization state so the Parent Dashboard can distinguish
+    /// "never asked" (show Enable) from "denied" (send to Settings) from
+    /// "authorized" (show On). Kids Category compliance requires the parent
+    /// to explicitly initiate the system prompt.
+    static func authorizationStatus() async -> UNAuthorizationStatus {
+        await UNUserNotificationCenter.current().notificationSettings().authorizationStatus
+    }
 }

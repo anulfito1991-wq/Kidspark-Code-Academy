@@ -41,7 +41,7 @@ struct LessonView: View {
                 Button("Close") { dismiss() }
             }
         }
-        .onAppear {
+        .task {
             appState.markOpened(lesson)
         }
     }
@@ -81,7 +81,7 @@ struct LessonView: View {
             appState.completeLesson(lesson, score: score)
             withAnimation { showReward = true }
         } else {
-            withAnimation { stepIndex += 1 }
+            stepIndex += 1
         }
     }
 }

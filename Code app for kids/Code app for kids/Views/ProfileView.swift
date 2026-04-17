@@ -67,6 +67,18 @@ struct ProfileView: View {
                     }
                 }
 
+                Section("Support & Legal") {
+                    Link(destination: URL(string: "mailto:kidspark.academy.learning@gmail.com")!) {
+                        Label("Contact support", systemImage: "envelope")
+                    }
+                    Link(destination: URL(string: "https://anulfito1991-wq.github.io/Kidspark-Code-Academy/")!) {
+                        Label("Privacy policy", systemImage: "hand.raised")
+                    }
+                    Link(destination: URL(string: "https://anulfito1991-wq.github.io/Kidspark-Code-Academy/terms.html")!) {
+                        Label("Terms of service", systemImage: "doc.text")
+                    }
+                }
+
                 Section("About") {
                     HStack {
                         Text("Version")

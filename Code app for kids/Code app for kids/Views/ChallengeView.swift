@@ -93,7 +93,7 @@ struct ChallengeView: View {
                 }
 
                 if showConfetti {
-                    ConfettiView()
+                    ConfettiView(isActive: showConfetti)
                         .allowsHitTesting(false)
                         .ignoresSafeArea()
                 }
@@ -131,7 +131,7 @@ private struct OptionButton: View {
             HStack {
                 Text(label)
                     .font(.system(size: 17, weight: .semibold))
-                    .foregroundStyle(state == .idle ? .primary : .white)
+                    .foregroundStyle(state == .idle ? Color.primary : .white)
                 Spacer()
                 if state != .idle {
                     Image(systemName: state == .correct ? "checkmark.circle.fill" : "xmark.circle.fill")
@@ -140,7 +140,7 @@ private struct OptionButton: View {
             }
             .padding(.horizontal, 18)
             .padding(.vertical, 14)
-            .background(background, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .background(background)
         }
         .disabled(!isEnabled)
         .buttonStyle(.plain)

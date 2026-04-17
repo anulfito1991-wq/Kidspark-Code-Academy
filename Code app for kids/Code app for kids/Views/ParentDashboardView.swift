@@ -1,4 +1,5 @@
 import SwiftUI
+import UserNotifications
 
 struct ParentDashboardView: View {
     var body: some View {
@@ -10,6 +11,8 @@ struct ParentDashboardView: View {
 
 private struct ParentDashboardContent: View {
     @Environment(AppState.self) private var appState
+    @State private var notificationStatus: UNAuthorizationStatus = .notDetermined
+    private var notificationsAuthorized: Bool { notificationStatus == .authorized }
 
     private var learner: Learner { appState.learner }
     private var progressByID: [String: LessonProgress] { appState.progressByID }
@@ -42,6 +45,59 @@ private struct ParentDashboardContent: View {
         }
     }
 
+    // MARK: Notifications row state
+
+    private var notificationSubtitle: String {
+        switch notificationStatus {
+        case .authorized, .provisional, .ephemeral:
+            return "On — streak & challenge reminders"
+        case .denied:
+            return "Off — enable in iOS Settings"
+        case .notDetermined:
+            return "Off — tap Enable to turn on reminders"
+        @unknown default:
+            return "Off"
+        }
+    }
+
+    @ViewBuilder
+    private var notificationActionButton: some View {
+        switch notificationStatus {
+        case .notDetermined:
+            // Parent-initiated prompt — required for Kids Category compliance.
+            Button("Enable") {
+                Task {
+                    _ = await NotificationService.requestPermission()
+                    notificationStatus = await NotificationService.authorizationStatus()
+                }
+            }
+            .font(.system(size: 12, weight: .bold))
+            .foregroundStyle(.white)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .background(KidSpark.Colors.spark, in: Capsule())
+        case .denied, .authorized, .provisional, .ephemeral:
+            Button("Manage") {
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(url)
+                }
+            }
+            .font(.system(size: 12, weight: .semibold))
+            .foregroundStyle(KidSpark.Colors.spark)
+        @unknown default:
+            EmptyView()
+        }
+    }
+
+    // Concepts the learner has been exposed to, ranked by frequency.
+    // Derived each render from completed progress + catalog — no new storage.
+    private var conceptSummary: [(Concept, Int)] {
+        let completedLessons: [Lesson] = progressByID.values
+            .filter { $0.status == .completed }
+            .compactMap { appState.catalog.lesson(id: $0.lessonID) }
+        return Array(ConceptTagger.summary(forCompletedLessons: completedLessons).prefix(6))
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -65,7 +121,7 @@ private struct ParentDashboardContent: View {
                         HStack {
                             Image(systemName: "clock.fill")
                                 .foregroundStyle(KidSpark.Colors.sky)
-                            Text("Last active: \(last, style: .relative) ago")
+                            Text("Last active: \(last, style: .relative)")
                                 .font(.system(size: 13, weight: .medium))
                                 .foregroundStyle(.secondary)
                             Spacer()
@@ -79,13 +135,41 @@ private struct ParentDashboardContent: View {
                             .frame(height: 80)
                     }
 
-                    // Language progress
+                    // Concepts learned
+                    if !conceptSummary.isEmpty {
+                        DashboardCard(title: "Concepts Learned", icon: "brain.head.profile", accent: KidSpark.Colors.coral) {
+                            // Flexible wrap of concept chips.
+                            FlexibleChipGrid(items: conceptSummary, spacing: 8) { concept, count in
+                                ConceptChip(concept: concept, count: count)
+                            }
+                        }
+                    }
+
+                    // Language progress — each row drills into the lesson list.
                     DashboardCard(title: "Languages", icon: "list.bullet", accent: KidSpark.Colors.sky) {
                         VStack(spacing: 10) {
                             ForEach(languageProgress, id: \.0.id) { lang, done, total in
-                                LanguageProgressRow(language: lang, done: done, total: total)
+                                NavigationLink {
+                                    LanguageLessonDrillDown(language: lang)
+                                        .environment(appState)
+                                } label: {
+                                    HStack(spacing: 10) {
+                                        LanguageProgressRow(language: lang, done: done, total: total)
+                                        Image(systemName: "chevron.right")
+                                            .font(.system(size: 12, weight: .semibold))
+                                            .foregroundStyle(.tertiary)
+                                    }
+                                    .contentShape(Rectangle())
+                                }
+                                .buttonStyle(.plain)
                             }
                         }
+                    }
+
+                    // Daily goal stepper (mirrors the one in Profile so parents
+                    // can set a target without swiping through tabs).
+                    DashboardCard(title: "Daily Goal", icon: "target", accent: KidSpark.Colors.leaf) {
+                        DailyGoalStepper()
                     }
 
                     // Lessons summary
@@ -126,6 +210,38 @@ private struct ParentDashboardContent: View {
                         }
                     }
 
+                    // Settings card — age declaration + notifications
+                    DashboardCard(title: "Settings", icon: "gearshape.fill", accent: KidSpark.Colors.sky) {
+                        VStack(spacing: 14) {
+                            HStack {
+                                Image(systemName: "person.crop.circle")
+                                    .foregroundStyle(.secondary)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text("Age declared")
+                                        .font(.system(size: 13, weight: .semibold))
+                                    Text(learner.isUnder13 ? "Under 13" : "13 or older")
+                                        .font(.system(size: 12))
+                                        .foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                            }
+                            Divider()
+                            HStack {
+                                Image(systemName: notificationsAuthorized ? "bell.fill" : "bell.slash.fill")
+                                    .foregroundStyle(notificationsAuthorized ? KidSpark.Colors.spark : .secondary)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text("Notifications")
+                                        .font(.system(size: 13, weight: .semibold))
+                                    Text(notificationSubtitle)
+                                        .font(.system(size: 12))
+                                        .foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                                notificationActionButton
+                            }
+                        }
+                    }
+
                     // Challenges
                     let challengesWon = learner.completedChallengeIDs.count
                     if challengesWon > 0 {
@@ -144,6 +260,9 @@ private struct ParentDashboardContent: View {
             .background(KidSpark.Colors.pageBackground.ignoresSafeArea())
             .navigationTitle("Parent Dashboard")
             .navigationBarTitleDisplayMode(.large)
+            .task {
+                notificationStatus = await NotificationService.authorizationStatus()
+            }
         }
     }
 }
@@ -238,6 +357,143 @@ private struct WeeklyBarChart: View {
                 }
                 .frame(maxWidth: .infinity)
             }
+        }
+    }
+}
+
+private struct ConceptChip: View {
+    let concept: Concept
+    let count: Int
+
+    var body: some View {
+        HStack(spacing: 6) {
+            Text(concept.emoji).font(.system(size: 14))
+            Text(concept.displayName)
+                .font(.system(size: 12, weight: .semibold))
+            Text("×\(count)")
+                .font(.system(size: 11, weight: .medium))
+                .foregroundStyle(.secondary)
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 6)
+        .background(KidSpark.Colors.coral.opacity(0.12), in: Capsule())
+        .foregroundStyle(KidSpark.Colors.coral)
+    }
+}
+
+/// Adaptive grid of concept chips. LazyVGrid is enough since we cap at 6.
+private struct FlexibleChipGrid<Content: View>: View {
+    let items: [(Concept, Int)]
+    let spacing: CGFloat
+    let content: (Concept, Int) -> Content
+
+    init(items: [(Concept, Int)],
+         spacing: CGFloat = 8,
+         @ViewBuilder content: @escaping (Concept, Int) -> Content) {
+        self.items = items
+        self.spacing = spacing
+        self.content = content
+    }
+
+    var body: some View {
+        LazyVGrid(
+            columns: [GridItem(.adaptive(minimum: 130), spacing: spacing, alignment: .leading)],
+            alignment: .leading,
+            spacing: spacing
+        ) {
+            ForEach(Array(items.enumerated()), id: \.offset) { _, pair in
+                content(pair.0, pair.1)
+            }
+        }
+    }
+}
+
+private struct LanguageLessonDrillDown: View {
+    let language: Language
+    @Environment(AppState.self) private var appState
+
+    private var lessons: [Lesson] { appState.catalog.lessons(for: language.id) }
+
+    var body: some View {
+        List {
+            ForEach(lessons) { lesson in
+                let p = appState.progressByID[lesson.id]
+                HStack(spacing: 12) {
+                    Image(systemName: icon(for: p?.status))
+                        .foregroundStyle(color(for: p?.status))
+                        .frame(width: 22)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(lesson.title)
+                            .font(.system(size: 14, weight: .semibold))
+                        Text(tierLabel(lesson.tier))
+                            .font(.system(size: 11))
+                            .foregroundStyle(.secondary)
+                    }
+                    Spacer()
+                    if let p, p.status == .completed {
+                        Text("Best \(p.bestScore)")
+                            .font(.system(size: 12, weight: .medium))
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .padding(.vertical, 4)
+            }
+        }
+        .navigationTitle(language.displayName)
+        .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func icon(for status: NodeStatus?) -> String {
+        switch status {
+        case .completed: return "checkmark.circle.fill"
+        case .inProgress: return "circle.dotted"
+        case .available: return "circle"
+        case .proLocked: return "crown.fill"
+        case .locked, .none: return "lock.fill"
+        }
+    }
+
+    private func color(for status: NodeStatus?) -> Color {
+        switch status {
+        case .completed: return KidSpark.Colors.leaf
+        case .inProgress: return KidSpark.Colors.spark
+        case .available: return KidSpark.Colors.sky
+        case .proLocked: return KidSpark.Colors.glow
+        case .locked, .none: return .secondary
+        }
+    }
+
+    private func tierLabel(_ tier: LessonTier) -> String {
+        switch tier {
+        case .basics: return "Basics"
+        case .intermediate: return "Intermediate"
+        case .advanced: return "Advanced"
+        }
+    }
+}
+
+private struct DailyGoalStepper: View {
+    @Environment(AppState.self) private var appState
+
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text("\(appState.learner.dailyGoal) lesson\(appState.learner.dailyGoal == 1 ? "" : "s") / day")
+                    .font(.system(size: 15, weight: .bold))
+                Text("Target for streak to count")
+                    .font(.system(size: 11))
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+            Stepper(
+                "Daily goal",
+                value: Binding(
+                    get: { appState.learner.dailyGoal },
+                    set: { appState.setDailyGoal($0) }
+                ),
+                in: 1...10
+            )
+            .labelsHidden()
         }
     }
 }

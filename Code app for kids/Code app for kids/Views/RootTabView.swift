@@ -12,28 +12,37 @@ struct RootTabView: View {
         Group {
             if let appState {
                 ZStack {
-                    TabView(selection: $selectedTab) {
-                        HomeView()
-                            .tag(0)
-                            .tabItem { Label("Learn", systemImage: "bolt.fill") }
-                        LearnerProgressView()
-                            .tag(1)
-                            .tabItem { Label("Progress", systemImage: "chart.bar.fill") }
-                        PaywallView()
-                            .tag(2)
-                            .tabItem { Label("Pro", systemImage: "crown.fill") }
-                        ProfileView()
-                            .tag(3)
-                            .tabItem { Label("Profile", systemImage: "person.crop.circle") }
-                        ParentDashboardView()
-                            .tag(4)
-                            .tabItem { Label("Parents", systemImage: "person.2.fill") }
-                    }
-                    .tint(KidSpark.Colors.spark)
-                    .environment(appState)
-                    .task {
-                        await appState.bootstrap()
-                        _ = await NotificationService.requestPermission()
+                    if !appState.learner.ageGateCompleted {
+                        AgeGateView()
+                            .environment(appState)
+                            .transition(.opacity)
+                    } else {
+                        TabView(selection: $selectedTab) {
+                            HomeView()
+                                .tag(0)
+                                .tabItem { Label("Learn", systemImage: "bolt.fill") }
+                            LearnerProgressView()
+                                .tag(1)
+                                .tabItem { Label("Progress", systemImage: "chart.bar.fill") }
+                            PaywallView()
+                                .tag(2)
+                                .tabItem { Label("Pro", systemImage: "crown.fill") }
+                            ProfileView()
+                                .tag(3)
+                                .tabItem { Label("Profile", systemImage: "person.crop.circle") }
+                            ParentDashboardView()
+                                .tag(4)
+                                .tabItem { Label("Parents", systemImage: "person.2.fill") }
+                        }
+                        .tint(KidSpark.Colors.spark)
+                        .environment(appState)
+                        .task {
+                            await appState.bootstrap()
+                            // Notification permission is NOT requested at
+                            // bootstrap. For Kids Category compliance it must
+                            // be initiated explicitly by a parent via the
+                            // Parent Dashboard "Enable reminders" control.
+                        }
                     }
 
                     // Level-up toast
@@ -77,7 +86,8 @@ struct RootTabView: View {
     }
 
     private func bootstrap() {
-        catalog.loadIfNeeded()
+        // Catalog loads asynchronously inside AppState.bootstrap() so we don't
+        // block the main thread here.
         appState = AppState(modelContext: modelContext, catalog: catalog, store: store)
     }
 }

@@ -1,6 +1,9 @@
 import Foundation
 import SwiftData
 import Observation
+import OSLog
+
+private let appStateLog = Logger(subsystem: "com.kidspark.academy", category: "AppState")
 
 @Observable
 @MainActor
@@ -12,6 +15,9 @@ final class AppState {
     private(set) var recentlyEarnedBadges: [Badge] = []
     private(set) var currentMilestone: XPMilestone?
     private(set) var activeChallenge: ChallengeEntry?
+    /// Surfaces the last SwiftData fetch error (if any) so UI / diagnostics
+    /// can tell a cold "no progress yet" state apart from a load failure.
+    private(set) var lastFetchError: String?
     var showLevelUp: Bool = false
     var lastAwardedXP: Int = 0
 
@@ -26,7 +32,7 @@ final class AppState {
     }
 
     func bootstrap() async {
-        catalog.loadIfNeeded()
+        await catalog.loadIfNeeded()
         await store.start()
         syncProFromStore()
         loadActiveChallenge()
@@ -45,6 +51,24 @@ final class AppState {
         awardXP(entry.xpReward)
         evaluateBadges()
         NotificationService.scheduleWeeklyChallengeAlert()
+        try? modelContext.save()
+    }
+
+    func setDailyGoal(_ value: Int) {
+        let clamped = max(1, min(10, value))
+        guard learner.dailyGoal != clamped else { return }
+        learner.dailyGoal = clamped
+        try? modelContext.save()
+    }
+
+    func completeAgeGate(isUnder13: Bool, parentConsent: Bool = false) {
+        learner.isUnder13 = isUnder13
+        learner.ageGateCompleted = true
+        // Record parent consent date only when a parent explicitly confirmed
+        // on the under-13 path. 13+ users don't need parental consent.
+        if parentConsent {
+            learner.parentConsentDate = .now
+        }
         try? modelContext.save()
     }
 
@@ -71,26 +95,34 @@ final class AppState {
             .filter { $0.order < lesson.order }
             .sorted { $0.order < $1.order }
             .last
+        let freeID = UnlockService.freeIntermediateLessonID(in: lessons, hasPro: hasPro)
         return UnlockService.status(
             for: lesson,
             previousLessonInSamePath: previous,
             progressByID: progressByID,
-            hasPro: hasPro
+            hasPro: hasPro,
+            freeIntermediateLessonID: freeID
         )
     }
 
     func markOpened(_ lesson: Lesson) {
-        let progress = ensureProgress(for: lesson)
+        let (progress, didCreate) = ensureProgress(for: lesson)
+        var needsSave = didCreate
+
         if progress.status == .available {
             progress.status = .inProgress
+            needsSave = true
         }
         progress.lastOpenedAt = .now
         progressByID[lesson.id] = progress
-        try? modelContext.save()
+
+        if needsSave {
+            try? modelContext.save()
+        }
     }
 
     func completeLesson(_ lesson: Lesson, score: Int) {
-        let progress = ensureProgress(for: lesson)
+        let (progress, _) = ensureProgress(for: lesson)
         let alreadyCompleted = progress.status == .completed
         progress.status = .completed
         progress.bestScore = max(progress.bestScore, score)
@@ -156,20 +188,30 @@ final class AppState {
         }
     }
 
-    private func ensureProgress(for lesson: Lesson) -> LessonProgress {
+    private func ensureProgress(for lesson: Lesson) -> (progress: LessonProgress, didCreate: Bool) {
         if let existing = progressByID[lesson.id] {
-            return existing
+            return (existing, false)
         }
         let new = LessonProgress(lessonID: lesson.id, languageID: lesson.languageID, status: .available)
         modelContext.insert(new)
         progressByID[lesson.id] = new
-        return new
+        return (new, true)
     }
 
     private func reloadProgressIndex() {
         let descriptor = FetchDescriptor<LessonProgress>()
-        let all = (try? modelContext.fetch(descriptor)) ?? []
-        progressByID = Dictionary(uniqueKeysWithValues: all.map { ($0.lessonID, $0) })
+        do {
+            let all = try modelContext.fetch(descriptor)
+            progressByID = Dictionary(uniqueKeysWithValues: all.map { ($0.lessonID, $0) })
+            lastFetchError = nil
+        } catch {
+            // Don't silently drop progress on a fetch failure — that makes
+            // every lesson look locked. Log and expose the error so the bug
+            // is diagnosable instead of invisible.
+            appStateLog.error("LessonProgress fetch failed: \(error.localizedDescription, privacy: .public)")
+            lastFetchError = error.localizedDescription
+            // Preserve the current in-memory index; better to show stale than empty.
+        }
     }
 
     func resetProgress() {
@@ -182,18 +224,30 @@ final class AppState {
         learner.lastActiveDate = nil
         learner.earnedBadgeIDs = []
         learner.completedChallengeIDs = []
+        learner.ageGateCompleted = false
+        learner.isUnder13 = false
+        learner.parentConsentDate = nil
         NotificationService.cancelAll()
+        ParentPINStore.clear()
         try? modelContext.save()
     }
 
     private static func loadOrCreateLearner(in context: ModelContext) -> Learner {
         let descriptor = FetchDescriptor<Learner>()
-        if let existing = try? context.fetch(descriptor).first {
-            return existing
+        do {
+            if let existing = try context.fetch(descriptor).first {
+                return existing
+            }
+        } catch {
+            appStateLog.error("Learner fetch failed: \(error.localizedDescription, privacy: .public)")
         }
         let fresh = Learner()
         context.insert(fresh)
-        try? context.save()
+        do {
+            try context.save()
+        } catch {
+            appStateLog.error("Learner save failed: \(error.localizedDescription, privacy: .public)")
+        }
         return fresh
     }
 }

@@ -3,9 +3,8 @@ import SwiftUI
 struct LessonNodeView: View {
     let lesson: Lesson
     let status: NodeStatus
+    let isHighlighted: Bool
     let accent: Color
-
-    @State private var pulse: Bool = false
 
     private var bg: Color {
         switch status {
@@ -39,12 +38,15 @@ struct LessonNodeView: View {
     var body: some View {
         VStack(spacing: 8) {
             ZStack {
-                // Glow ring for current/available
+                // Static highlight for the next actionable lesson. Avoid repeat-forever
+                // animations here because the path screen can keep many nodes alive.
                 if status == .inProgress || status == .available {
                     Circle()
-                        .stroke(accent.opacity(pulse ? 0.35 : 0.15), lineWidth: pulse ? 10 : 6)
+                        .stroke(
+                            accent.opacity(isHighlighted ? 0.28 : 0.14),
+                            lineWidth: isHighlighted ? 9 : 5
+                        )
                         .frame(width: AppTheme.nodeSize + 16, height: AppTheme.nodeSize + 16)
-                        .animation(.easeInOut(duration: 1.4).repeatForever(autoreverses: true), value: pulse)
                 }
 
                 Circle()
@@ -72,6 +74,19 @@ struct LessonNodeView: View {
                 .frame(maxWidth: 110)
                 .foregroundStyle(status == .locked || status == .proLocked ? Color.secondary : .primary)
         }
-        .onAppear { pulse = true }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(lesson.title)
+        .accessibilityValue(statusLabel)
+        .accessibilityHint(status == .available || status == .inProgress ? "Double tap to start the lesson" : "")
+    }
+
+    private var statusLabel: String {
+        switch status {
+        case .completed: return "Completed"
+        case .inProgress: return "In progress"
+        case .available: return "Ready to start"
+        case .locked: return "Locked. Finish the previous lesson to unlock"
+        case .proLocked: return "Pro lesson, locked. Upgrade to Pro to unlock"
+        }
     }
 }

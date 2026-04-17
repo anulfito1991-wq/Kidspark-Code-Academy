@@ -93,7 +93,7 @@
           "payload": {
             "title": "Anchor tags make links",
             "body": "The <a> tag creates a link. The href attribute tells the browser where to go when clicked.",
-            "codeSample": "<a href=\"https://example.com\">Click me!</a>"
+            "codeSample": "<a href=\"#\">Click me!</a>"
           }
         },
         {
@@ -110,7 +110,7 @@
           "payload": {
             "prompt": "Complete the link tag attribute.",
             "codeBefore": "<a ",
-            "codeAfter": "=\"https://kidspark.com\">Visit KidSpark</a>",
+            "codeAfter": "=\"#\">Visit KidSpark</a>",
             "choices": ["href", "src", "link"],
             "correctIndex": 0,
             "explanation": "href is the attribute that holds the link destination."

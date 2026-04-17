@@ -8,38 +8,53 @@ final class CatalogStore {
     private(set) var lessonsByLanguage: [String: [Lesson]] = [:]
     private(set) var lessonsByID: [String: Lesson] = [:]
     private(set) var loadError: String?
+    private(set) var isReady: Bool = false
 
-    func loadIfNeeded() {
-        guard lessonsByLanguage.isEmpty else { return }
-        load()
+    /// Async-loads the bundled lesson JSON off the main thread.
+    /// Returns immediately if already loaded.
+    func loadIfNeeded() async {
+        guard !isReady else { return }
+        let languageIDs = languages.map(\.id)
+
+        // Decode on a background task. Bundle URL lookups and file reads are
+        // safe off-main; we only hop back to @MainActor to publish results.
+        let result = await Task.detached(priority: .userInitiated) { () -> LoadResult in
+            var byLang: [String: [Lesson]] = [:]
+            var byID: [String: Lesson] = [:]
+            var firstError: String?
+            let decoder = JSONDecoder()
+
+            for langID in languageIDs {
+                guard let url = Self.bundleURL(for: langID) else {
+                    firstError = firstError ?? "Missing lesson file for \(langID)"
+                    continue
+                }
+                do {
+                    let data = try Data(contentsOf: url)
+                    let pack = try decoder.decode(LessonPack.self, from: data)
+                    let ordered = pack.lessons.sorted { $0.order < $1.order }
+                    byLang[langID] = ordered
+                    for l in ordered { byID[l.id] = l }
+                } catch {
+                    firstError = firstError ?? "Failed to load \(langID): \(error.localizedDescription)"
+                }
+            }
+            return LoadResult(byLang: byLang, byID: byID, error: firstError)
+        }.value
+
+        self.lessonsByLanguage = result.byLang
+        self.lessonsByID = result.byID
+        self.loadError = result.error
+        self.isReady = true
     }
 
-    private func load() {
-        var byLang: [String: [Lesson]] = [:]
-        var byID: [String: Lesson] = [:]
-        let decoder = JSONDecoder()
-
-        for lang in languages {
-            guard let url = Self.bundleURL(for: lang.id) else {
-                loadError = "Missing lesson file for \(lang.id)"
-                continue
-            }
-            do {
-                let data = try Data(contentsOf: url)
-                let pack = try decoder.decode(LessonPack.self, from: data)
-                let ordered = pack.lessons.sorted { $0.order < $1.order }
-                byLang[lang.id] = ordered
-                for l in ordered { byID[l.id] = l }
-            } catch {
-                loadError = "Failed to load \(lang.id): \(error.localizedDescription)"
-            }
-        }
-
-        self.lessonsByLanguage = byLang
-        self.lessonsByID = byID
+    private struct LoadResult: Sendable {
+        let byLang: [String: [Lesson]]
+        let byID: [String: Lesson]
+        let error: String?
     }
 
-    private static func bundleURL(for languageID: String) -> URL? {
+    nonisolated private static func bundleURL(for languageID: String) -> URL? {
         if let url = Bundle.main.url(forResource: languageID, withExtension: "json", subdirectory: "Lessons") {
             return url
         }
