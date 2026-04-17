@@ -14,16 +14,16 @@ Pricing: Free (with subscriptions)
 *(29 chars)*
 
 ## Subtitle (30 char max)
-> **Learn Swift, Python, HTML fun**
-*(30 chars)*
+> **7 languages. 90+ lessons.**
+*(26 chars)*
 
 ## Promotional Text (170 char max — editable post-launch without resubmit)
-> **New! Weekly challenges, daily streaks, and bite-size lessons in Swift, Python & HTML. Perfect for curious kids 6–12. No ads. No tracking. Just spark.**
-*(156 chars)*
+> **7 coding languages, 90+ lessons, weekly challenges, daily streaks. Bite-size learning for curious kids 6–12. No ads. No tracking. Just spark.**
+*(146 chars)*
 
 ## Keywords (100 char max, comma-separated, NO spaces after commas)
-> **kids coding,learn to code,python for kids,swift playgrounds,html,programming,stem,kids education**
-*(99 chars)*
+> **kids coding,learn to code,python,swift,javascript,scratch,html,java,lua,stem,programming**
+*(92 chars)*
 
 ## Description (4000 char max)
 
@@ -33,15 +33,20 @@ adventure kids want to come back to. Bite-size lessons, a streak that rewards
 consistency, and weekly challenges that stretch what they just learned — built
 for curious kids ages 6 to 12.
 
-WHAT YOUR CHILD LEARNS
-• Swift — Apple's modern language, the same one used to build iPhone apps
+SEVEN CODING LANGUAGES, 90+ LESSONS
+• Scratch — drag-and-drop blocks, the perfect first step
+• Swift — Apple's modern language, used to build iPhone apps
 • Python — the language of data, science, and AI
-• HTML — the building blocks of every website they've ever visited
+• JavaScript — the language that powers every website
+• HTML — the building blocks of the web
+• Java — the language of Minecraft mods and Android
+• Lua — the scripting language inside Roblox Studio
 
 HOW IT WORKS
 • Short, focused lessons (2–5 minutes) — perfect between homework and dinner
+• Three tiers per language — Basics, Intermediate, Advanced
 • Concept tags show exactly what each lesson teaches: variables, loops,
-  functions, conditionals, events, and more
+  functions, conditionals, events, classes, and more
 • Progress tree visualizes their journey through each language
 • Daily streak with a goal stepper parents can tune (1–10 lessons/day)
 • Weekly coding challenge that levels up with their skill
@@ -58,11 +63,12 @@ MADE FOR FAMILIES
 • Subscription purchases sit behind a press-and-hold parental gate
 
 KIDSPARK ACADEMY PRO
-Unlock the full curriculum, advanced challenges, and all three language paths:
+Unlock every intermediate and advanced lesson across all seven languages,
+earn XP 2× faster, and get 2 streak freezes per month:
 • Monthly — $4.99
 • Annual — $39.99 (save 33%)
-Free forever: the foundation lessons in every language, streak tracking,
-and the Parent Dashboard.
+Free forever: the 42 foundation lessons (6 per language × 7 languages),
+streak tracking, weekly challenges, and the Parent Dashboard.
 
 Subscriptions auto-renew unless cancelled at least 24 hours before the
 current period ends. Payment is charged to your Apple ID at purchase
@@ -88,7 +94,8 @@ iteration without a resubmit.)*
 ```
 Welcome to KidSpark Academy! This first release includes:
 
-• Three languages: Swift, Python, and HTML
+• 7 coding languages: Scratch, Swift, Python, JavaScript, HTML, Java, Lua
+• 91 lessons across Basics, Intermediate, and Advanced tiers
 • Bite-size lessons with visual progress trees
 • Daily streaks and a customizable daily goal (1–10 lessons/day)
 • Weekly coding challenges
@@ -206,7 +213,7 @@ Thank you.
 | Duration | 1 Month |
 | Price | Tier 5 ($4.99 USD) |
 | Display Name (en-US) | **KidSpark Pro Monthly** |
-| Description (en-US) | *"Unlock every lesson, every challenge, and every language. Cancel anytime."* (87 chars) |
+| Description (en-US) | *"Unlock every intermediate and advanced lesson across all 7 languages. 2× XP. Cancel anytime."* (99 chars) |
 | Review Screenshot | Upload the Paywall screenshot (see `02-screenshots-plan.md`) |
 
 ### Product 2 — Annual
@@ -218,7 +225,7 @@ Thank you.
 | Duration | 1 Year |
 | Price | Tier 40 ($39.99 USD) |
 | Display Name (en-US) | **KidSpark Pro Annual** |
-| Description (en-US) | *"Best value — save 33%. Every lesson, every challenge, every language, all year."* (83 chars) |
+| Description (en-US) | *"Best value — save 33%. Every intermediate and advanced lesson, all 7 languages, 2× XP."* (93 chars) |
 | Review Screenshot | Upload the Paywall screenshot |
 
 ### Required Subscription Metadata (for BOTH products)
