@@ -25,7 +25,7 @@ waiting on Apple enrollment + Paid Apps Agreement propagation.
   - [ ] **Tax** — complete W-9 (US) or W-8BEN (non-US)
 - [ ] Create the app:
   - Platforms: **iOS** (covers both iPhone and iPad — single checkbox)
-  - Name: **KidSpark Academy: Kids Code**
+  - Name: **KidSpark Code Academy**
   - Primary Language: English (U.S.)
   - Bundle ID: **com.kidspark.academy** (pick from dropdown; register as an App ID first if missing)
   - SKU: `kidspark-academy-001`

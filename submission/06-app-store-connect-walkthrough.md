@@ -25,7 +25,7 @@ tax/banking forms to clear and copy-pasting fields.
 1. Go to **Apps** → **+ (New App)**.
 2. Fill in:
    - **Platform:** iOS
-   - **Name:** `KidSpark Academy: Kids Code`
+   - **Name:** `KidSpark Code Academy`
    - **Primary Language:** English (U.S.)
    - **Bundle ID:** `com.kidspark.academy` (select from the dropdown — it
      must already exist in the Developer Portal as an App ID. If it

@@ -10,8 +10,8 @@ Pricing: Free (with subscriptions)
 ---
 
 ## App Name (30 char max)
-> **KidSpark Academy: Kids Code**
-*(29 chars)*
+> **KidSpark Code Academy**
+*(21 chars)*
 
 ## Subtitle (30 char max)
 > **7 languages. 90+ lessons.**
