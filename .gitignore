@@ -42,3 +42,7 @@ Podfile.lock
 *.p8
 *.p12
 AuthKey_*.p8
+
+# Screenshot capture build artifacts
+Code app for kids/build-iphone/
+Code app for kids/build-ipad/

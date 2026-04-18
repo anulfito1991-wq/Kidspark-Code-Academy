@@ -60,6 +60,7 @@ struct TreeBranchLayout: View {
                         )
                     }
                     .buttonStyle(.plain)
+                    .accessibilityIdentifier("lesson-\(lesson.id)")
                     .position(x: centerX + xOffset(for: index), y: y(forIndex: index))
                 }
             }

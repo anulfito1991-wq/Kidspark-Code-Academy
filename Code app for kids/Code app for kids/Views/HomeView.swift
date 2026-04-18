@@ -128,6 +128,7 @@ struct HomeView: View {
                         LanguageTile(language: lang, progress: progressFraction(for: lang.id))
                     }
                     .buttonStyle(PressableTileStyle())
+                    .accessibilityIdentifier("lang-\(lang.id)")
                 }
             }
             .padding(.horizontal, KidSpark.Layout.pagePadding)
