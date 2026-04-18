@@ -46,3 +46,7 @@ AuthKey_*.p8
 # Screenshot capture build artifacts
 Code app for kids/build-iphone/
 Code app for kids/build-ipad/
+
+# App Store Connect API keys — NEVER commit
+private_keys/
+*.p8
