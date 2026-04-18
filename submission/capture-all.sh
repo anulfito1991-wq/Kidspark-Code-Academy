@@ -33,12 +33,12 @@ mkdir -p "$IPHONE_OUT" "$IPAD_OUT"
 # --- Helpers ---------------------------------------------------------------
 
 find_udid() {
+  # macOS /usr/bin/awk does not support 3-arg match(), so use grep+sed.
   local name="$1"
-  xcrun simctl list devices available | awk -v d="$name" '
-    /-- iOS/ { ios=1; next }
-    ios && index($0, d) {
-      match($0, /\(([-A-F0-9]+)\)/, a); print a[1]; exit
-    }'
+  xcrun simctl list devices available \
+    | grep -F "$name" \
+    | head -1 \
+    | sed -E 's/.*\(([-A-F0-9]+)\).*/\1/'
 }
 
 prep_sim() {
