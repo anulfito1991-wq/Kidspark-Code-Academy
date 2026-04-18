@@ -21,10 +21,21 @@ enum KidSpark {
         /// Mint — secondary success tone
         static let mint = Color(hex: "#14B8A6")!
 
-        /// Soft lavender page background
-        static let pageBackground = Color(hex: "#F5F0FF")!
-        /// Card surface
-        static let cardSurface = Color(hex: "#FFFFFF")!
+        /// Soft lavender page background (adaptive for light/dark mode).
+        /// Light: warm lavender that still pairs with our brand purple.
+        /// Dark: deep near-black with a hint of indigo so gradients and
+        /// colored accents still pop without washing out body text.
+        static let pageBackground = Color(uiColor: UIColor { trait in
+            trait.userInterfaceStyle == .dark
+                ? UIColor(red: 0.07, green: 0.06, blue: 0.11, alpha: 1.0)  // #12101C
+                : UIColor(red: 0.96, green: 0.94, blue: 1.00, alpha: 1.0)  // #F5F0FF
+        })
+        /// Card surface (adaptive). Pure white in light; elevated gray in dark.
+        static let cardSurface = Color(uiColor: UIColor { trait in
+            trait.userInterfaceStyle == .dark
+                ? UIColor(red: 0.13, green: 0.12, blue: 0.17, alpha: 1.0)  // #21202B
+                : UIColor.white
+        })
 
         /// Gradient for hero areas
         static let heroGradient = LinearGradient(
@@ -98,7 +109,7 @@ enum KidSpark {
                         .foregroundStyle(Colors.spark)
                     Text("Academy")
                         .font(Font.system(.caption, design: .rounded, weight: .semibold))
-                        .foregroundStyle(textColor.opacity(0.6))
+                        .foregroundStyle(textColor.opacity(0.85))
                 }
             }
         }
@@ -115,14 +126,18 @@ enum AppTheme {
 }
 
 extension View {
-    func kidSparkCard(tint: Color = .white, shadow: Bool = true) -> some View {
+    /// Default card uses the adaptive `cardSurface` so it reads correctly in
+    /// both light and dark mode. Callers can still override `tint` for accent
+    /// surfaces (e.g. colored callouts), but pure white has been removed as a
+    /// default because it blasted out in dark mode.
+    func kidSparkCard(tint: Color = KidSpark.Colors.cardSurface, shadow: Bool = true) -> some View {
         self
             .padding(AppTheme.cardPadding)
             .background(tint, in: RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius, style: .continuous))
             .shadow(color: AppTheme.softShadow, radius: shadow ? 8 : 0, y: shadow ? 3 : 0)
     }
 
-    func cardStyle(tint: Color = .white) -> some View {
+    func cardStyle(tint: Color = KidSpark.Colors.cardSurface) -> some View {
         kidSparkCard(tint: tint)
     }
 }
